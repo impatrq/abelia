@@ -8,6 +8,7 @@ import { user} from '../shared/user.class';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  user: user = new user ();
 
   constructor(private authSvc: AuthService, private router: Router) { }
 
