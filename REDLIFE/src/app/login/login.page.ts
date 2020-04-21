@@ -13,5 +13,13 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-
-}
+  async login() {
+    const user = await this.authSvc.login(this.user);
+    if (user) {
+      console.log('se inicio sesion');
+      this.router.navigateByUrl('/home');
+      
+    }
+    else {
+        console.log('error');
+}}}
