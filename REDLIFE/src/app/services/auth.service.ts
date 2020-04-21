@@ -9,7 +9,6 @@ export class AuthService {
   constructor() { }
   async login(user:user)
   { 
-    return firebase.auth()
-      .signInWithEmailAndPassword(user.email, user.password)
+    return firebase.auth().signInWithEmailAndPassword(user.email, user.password)
   }
 }
