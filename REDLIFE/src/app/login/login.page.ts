@@ -15,12 +15,9 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
   async login() {
-    const user = await this.authSvc.login(this.user);
-    if (user) {
-      console.log('se inicio sesion');
-      this.router.navigateByUrl('/home');
-      
-    }
-    else {
-        console.log('error');
-}}}
+    const user = await this.authSvc.login(this.user)
+    .then(login=>console.log('Inició sesión correctamente'))
+    .then(login=> this.router.navigateByUrl('/home'))
+    .catch(login=> console.log('Error en el inicio de sesión'))
+   
+   }}
