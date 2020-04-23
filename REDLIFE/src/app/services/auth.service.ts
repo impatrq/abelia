@@ -11,4 +11,9 @@ export class AuthService {
   { 
     return firebase.auth().signInWithEmailAndPassword(user.email, user.password)
   }
+  
+  async register(user:user)
+  { 
+    return firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+  }
 }
