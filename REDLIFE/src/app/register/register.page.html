@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Registrarse:</ion-title>
+    <ion-title>Registrarse</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-input [(ngModel)]='user.email' placeholder='email'
+  type='email'>
+  </ion-input>
 
+  <ion-input type= "text"[(ngModel)]='user.password' placeholder='Password' type='password'>
+  </ion-input>
+  <ion-button (click)=register()>
+     Registrarme
+  </ion-button>
+  
+  <ion-button href="/logoreg">
+Atrás
+  </ion-button>
 </ion-content>
