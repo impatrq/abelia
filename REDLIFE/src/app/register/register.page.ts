@@ -17,11 +17,13 @@ export class RegisterPage implements OnInit {
   this.authSvc.register(this.user)
   .then(user=>{
     this.router.navigateByUrl('/home');
-    console.log("Se Registro exitosamente");
+    console.log("Se Registro Exitosamente");
   })
   .catch(err=>{
     switch
     (err.code){
+      case("auth/invalid-email"):console.log("Email y/o Contraseña invalidos, o ya existe cuenta con esa direccion de mail");
+      break;
     }
   })
   }
