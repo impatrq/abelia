@@ -14,10 +14,18 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
   async register() {
-  const user = await this.authSvc.register(this.user)
-  .then(register=>console.log('Se ha registrado correctamente'))
-  .then(register=> this.router.navigateByUrl('/logoreg'))
-  .catch(register=> console.log('Error en el registro'))
+  this.authSvc.register(this.user)
+  .then(user=>{
+    this.router.navigateByUrl('/home');
+    console.log("Se Registro Exitosamente");
+  })
+  .catch(err=>{
+    switch
+    (err.code){
+      case("auth/invalid-email"):console.log("Email y/o Contraseña invalidos, o ya existe cuenta con esa direccion de mail");
+      break;
+    }
+  })
   }
  }
 
