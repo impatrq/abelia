@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'instrucciones-ficha-medica',
     loadChildren: () => import('./instrucciones-ficha-medica/instrucciones-ficha-medica.module').then( m => m.InstruccionesFichaMedicaPageModule)
   },
+  {
+    path: 'ficha-medica',
+    loadChildren: () => import('./ficha-medica/ficha-medica.module').then( m => m.FichaMedicaPageModule)
+  },
 
 ];
 
