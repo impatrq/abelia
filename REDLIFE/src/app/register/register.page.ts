@@ -16,10 +16,11 @@ export class RegisterPage implements OnInit {
   async register() {
   this.authSvc.register(this.user)
   .then(user=>{
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/InstruccionesFichaMedica');
     console.log("Se Registro Exitosamente");
   })
   .catch(err=>{
+    console.log(err);
     switch
     (err.code){
       case("auth/invalid-email"):console.log("Email y/o Contraseña invalidos");
