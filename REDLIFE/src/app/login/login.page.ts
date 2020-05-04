@@ -15,9 +15,19 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
   async login() {
-    const user = await this.authSvc.login(this.user)
-    .then(login=>console.log('Inició sesión correctamente'))
-    .then(login=> this.router.navigateByUrl('/home'))
-    .catch(login=> console.log('Error en el inicio de sesión'))
-   
-   }}
+    this.authSvc.login(this.user)
+     .then(user=>{
+       this.router.navigateByUrl('/home');
+       console.log('Inició sesión correctamente');
+      })
+     .catch(err=> {
+       console.log(err);
+        switch
+       (err.code){
+         case "auth/invalid-email": console.log("Email o Contraseña invalidos.");
+         case "auth/wrong-password": console.log("Email o Contraseña invalidos.");
+         break;
+       }
+      })
+    }
+  }
