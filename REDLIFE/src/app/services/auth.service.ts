@@ -16,4 +16,8 @@ export class AuthService {
   { 
     return firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
   }
+    async recuperarcontraseña(user:user)
+    {
+      return firebase.auth().sendPasswordResetEmail
+    }
 }
