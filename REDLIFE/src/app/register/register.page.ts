@@ -26,6 +26,7 @@ export class RegisterPage implements OnInit {
       case("auth/invalid-email"):console.log("Email y/o Contraseña invalidos");
       case("auth/email-already-in-use"):console.log("Ya existe una cuenta con la direccion de mail ingresada");
       case("auth/weak-password"):console.log("La contraseña debe tner 6 caracteres como minimo");
+      case("auth/argument-error"):console.log("El mail es inexistente o invalido");
       break;
     }
   })
