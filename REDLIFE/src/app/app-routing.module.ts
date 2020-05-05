@@ -16,12 +16,17 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
+<<<<<<< HEAD
     path: 'instrucciones-ficha-medica',
     loadChildren: () => import('./instrucciones-ficha-medica/instrucciones-ficha-medica.module').then( m => m.InstruccionesFichaMedicaPageModule)
   },
   {
     path: 'ficha-medica',
     loadChildren: () => import('./ficha-medica/ficha-medica.module').then( m => m.FichaMedicaPageModule)
+=======
+    path: 'recuperacioncontrasena',
+    loadChildren: () => import('./recuperacioncontrasena/recuperacioncontrasena.module').then( m => m.RecuperacioncontrasenaPageModule)
+>>>>>>> feature/recuperarcontraseña
   },
 
 ];
