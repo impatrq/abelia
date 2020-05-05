@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./recuperacioncontrasena/recuperacioncontrasena.module').then( m => m.RecuperacioncontrasenaPageModule)
 >>>>>>> feature/recuperarcontraseña
   },
+  {
+    path: 'cerrarsesion',
+    loadChildren: () => import('./cerrarsesion/cerrarsesion.module').then( m => m.CerrarsesionPageModule)
+  },
 
 ];
 
