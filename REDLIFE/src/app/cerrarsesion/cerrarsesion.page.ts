@@ -16,7 +16,8 @@ export class CerrarsesionPage implements OnInit {
 async cerrarsesion()
 {
   this.authSvc.cerrarsesion()
-  .then (()=>{console.log('se cerro sesión correctamente')})
+  .then (()=>{console.log('se cerro sesión correctamente');
+  this.router.navigateByUrl('/login');})
   .catch (err=>{
     console.log(err)
   })
