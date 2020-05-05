@@ -20,4 +20,8 @@ export class AuthService {
   }
 async recuperarcontrasena(email:string){
   return firebase.auth().sendPasswordResetEmail(email)
-}}
+}
+async cerrarsesion() {
+  return firebase.auth().signOut()
+}
+}
