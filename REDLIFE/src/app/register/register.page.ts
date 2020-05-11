@@ -16,7 +16,7 @@ export class RegisterPage implements OnInit {
   async register() {
   this.authSvc.register(this.user)
   .then(user=>{
-    this.router.navigateByUrl('/instrucciones-ficha-medica');
+    this.router.navigateByUrl('instrucciones-ficha-medica');
     console.log("Se Registro Exitosamente");
   })
   .catch(err=>{

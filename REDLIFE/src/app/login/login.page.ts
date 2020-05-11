@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
          case "auth/invalid-email": console.log("Email o Contraseña invalidos.");
          case "auth/wrong-password": console.log("Email o Contraseña invalidos.");
          case("auth/argument-error"):console.log("El mail es inexistente o invalido");
+         case("auth/user-not-found"):console.log("La Cuenta es Inexistente");
          break;
        }
       })

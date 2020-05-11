@@ -23,13 +23,22 @@ const routes: Routes = [
   {
     path: 'cerrarsesion',
     loadChildren: () => import('./cerrarsesion/cerrarsesion.module').then( m => m.CerrarsesionPageModule)
-  },  {
+  },
+  {
     path: 'ficha-medica-enfermedades',
     loadChildren: () => import('./ficha-medica-enfermedades/ficha-medica-enfermedades.module').then( m => m.FichaMedicaEnfermedadesPageModule)
   },
   {
     path: 'ficha-medica-medicacion',
     loadChildren: () => import('./ficha-medica-medicacion/ficha-medica-medicacion.module').then( m => m.FichaMedicaMedicacionPageModule)
+  },
+  {
+    path: 'instrucciones-ficha-medica',
+    loadChildren: () => import('./instrucciones-ficha-medica/instrucciones-ficha-medica.module').then( m => m.InstruccionesFichaMedicaPageModule)
+  },
+  {
+    path: 'ficha-medica',
+    loadChildren: () => import('./ficha-medica/ficha-medica.module').then( m => m.FichaMedicaPageModule)
   },
 
 
