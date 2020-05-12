@@ -6,8 +6,6 @@
 
 <ion-content>
 
-  <ion-button href='ficha-medica-medicacion'>Continuar!</ion-button>
-
   <ion-list>
     <ion-list-header>
       <ion-label>
@@ -17,21 +15,69 @@
   
     <ion-item>
       <ion-label>Enfermedades</ion-label>
-      <ion-select multiple="true" cancelText="Nah" okText="Okay!">
-        <ion-select-option value="enfermedad1">enfermedad1</ion-select-option>
-        <ion-select-option value="enfermedad 2">enfermedad2</ion-select-option>
-        <ion-select-option value="enfermedad 3">enfermdad 3</ion-select-option>
+      <ion-select multiple="true" cancelText="Cancelar" okText="Aceptar!">
+        <ion-select-option value="varicela">Varicela</ion-select-option>
+        <ion-select-option value="sarampion">Sarampion</ion-select-option>
+        <ion-select-option value="paperas">Paperas</ion-select-option>
+        <ion-select-option value="escarlatina">Escarlatina</ion-select-option>
+        <ion-select-option value="epilepsia">Epilepsia</ion-select-option>
+        <ion-select-option value="diabetes">Diabetes</ion-select-option>
+        <ion-select-option value="epoc">Epoc</ion-select-option>
+        <ion-select-option value="fibrosis">Fibrosis</ion-select-option>
+        <ion-select-option value="celiaquia">Celiaquia</ion-select-option>
+        <ion-select-option value="diarreacronica">Diarrea Cronica</ion-select-option>
+        <ion-select-option value="hepatitis">Hepatitis</ion-select-option>
+        <ion-select-option value="otraEnfermedad">Otra</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Alergias</ion-label>
+      <ion-select multiple="true" cancelText="Cancelar" okText="Aceptar!">
+        <ion-select-option value="alergia1">Alergia 1</ion-select-option>
+        <ion-select-option value="alergia2">Alergia 2</ion-select-option>
+        <ion-select-option value="alergia3">Alergia 3</ion-select-option>
+        <ion-select-option value="otraAlergia">Otra</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Padecimientos</ion-label>
+      <ion-select multiple="true" cancelText="Cancelar" okText="Aceptar!">
+        <ion-select-option value="convulsiones">Convulsiones</ion-select-option>
+        <ion-select-option value="tosconvulsiva">Tos Convulsiva</ion-select-option>
+        <ion-select-option value="sonambulismo">Sonambulismo</ion-select-option>
+        <ion-select-option value="sinusitis">Sinusitis</ion-select-option>
+        <ion-select-option value="tratamientoinsulina">Tratamiento con Insulina</ion-select-option>
+        <ion-select-option value="asma">Asma</ion-select-option>
+        <ion-select-option value="asmasevero">Asma Severo</ion-select-option>
+        <ion-select-option value="enurecis">Enuresis</ion-select-option>
+        <ion-select-option value="gastritis">Grastritis</ion-select-option>
+        <ion-select-option value="otroPadecimiento">Otro</ion-select-option>
       </ion-select>
     </ion-item>
   
     <ion-item>
-      <ion-label>Medicamentos</ion-label>
-      <ion-select multiple="true" [value]="['bird', 'dog']">
-        <ion-select-option value="medicamento1">medicamento1</ion-select-option>
-        <ion-select-option value="medicamento2">medicamento2</ion-select-option>
-        <ion-select-option value="medicamento3">medicamento 3</ion-select-option>
+      <ion-label>Medicacion</ion-label>
+      <ion-select multiple="true" cancelText="Cancelar" okText="Aceptar!">
+        <ion-select-option value="medicacion1">Medicacion 1</ion-select-option>
+        <ion-select-option value="medicacion2">Medicacion 2</ion-select-option>
+        <ion-select-option value="medicacion3">Medicacion 3</ion-select-option>
+        <ion-select-option value="otraMedicacion">Otra</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
+
+  <ion-input value="Si su Enfermedad, Alergia, Padecimiento o Medicacion" readonly></ion-input>
+  <ion-input value="no aparecen en la lista anterior y selecciono 'otra'," readonly></ion-input>
+  <ion-input value="Por favor, complete los siguientes campos:" readonly></ion-input>
+
+  <ion-input placeholder="-Enfermedad"></ion-input>
+  <ion-input placeholder="-Alergia"></ion-input>
+  <ion-input placeholder="-Padecimiento"></ion-input>
+  <ion-input placeholder="-Medicacion"></ion-input>
+
+  <ion-button href='ficha-medica'>Atras</ion-button>
+  <ion-button (click)="presentAlert()">Continuar!</ion-button>
 
 </ion-content>
