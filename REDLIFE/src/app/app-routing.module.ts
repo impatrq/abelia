@@ -29,10 +29,6 @@ const routes: Routes = [
     loadChildren: () => import('./ficha-medica-enfermedades/ficha-medica-enfermedades.module').then( m => m.FichaMedicaEnfermedadesPageModule)
   },
   {
-    path: 'ficha-medica-medicacion',
-    loadChildren: () => import('./ficha-medica-medicacion/ficha-medica-medicacion.module').then( m => m.FichaMedicaMedicacionPageModule)
-  },
-  {
     path: 'instrucciones-ficha-medica',
     loadChildren: () => import('./instrucciones-ficha-medica/instrucciones-ficha-medica.module').then( m => m.InstruccionesFichaMedicaPageModule)
   },
