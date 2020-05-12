@@ -35,7 +35,11 @@ const routes: Routes = [
   {
     path: 'ficha-medica',
     loadChildren: () => import('./ficha-medica/ficha-medica.module').then( m => m.FichaMedicaPageModule)
+  },  {
+    path: 'pagina-inicial',
+    loadChildren: () => import('./pagina-inicial/pagina-inicial.module').then( m => m.PaginaInicialPageModule)
   },
+
 
 
 ];
