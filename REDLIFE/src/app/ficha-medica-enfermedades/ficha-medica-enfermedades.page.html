@@ -8,4 +8,30 @@
 
   <ion-button href='ficha-medica-medicacion'>Continuar!</ion-button>
 
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Enfermedades y Medicaciones
+      </ion-label>
+    </ion-list-header>
+  
+    <ion-item>
+      <ion-label>Enfermedades</ion-label>
+      <ion-select multiple="true" cancelText="Nah" okText="Okay!">
+        <ion-select-option value="enfermedad1">enfermedad1</ion-select-option>
+        <ion-select-option value="enfermedad 2">enfermedad2</ion-select-option>
+        <ion-select-option value="enfermedad 3">enfermdad 3</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Medicamentos</ion-label>
+      <ion-select multiple="true" [value]="['bird', 'dog']">
+        <ion-select-option value="medicamento1">medicamento1</ion-select-option>
+        <ion-select-option value="medicamento2">medicamento2</ion-select-option>
+        <ion-select-option value="medicamento3">medicamento 3</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
