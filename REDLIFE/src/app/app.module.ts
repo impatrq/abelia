@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import * as firebase from 'firebase';
 import { environment } from '../environments/environment';
+
+import { AngularFirestore } from './firestore';
 firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
