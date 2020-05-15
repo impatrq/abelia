@@ -16,7 +16,7 @@ export class UsuariosListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.usuariosService.getUsuarios().subscribe(data => {
+    this.usuariosService.getUsuario().subscribe(data => {
       this.usuarios = data.map(e => {
         return {
           id: e.payload.doc.id,
