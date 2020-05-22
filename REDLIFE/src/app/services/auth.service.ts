@@ -1,27 +1,34 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase';
+//import * as firebase from 'firebase';
 import { user} from '../shared/user.class';
+
+import { AngularFirestore } from '@angular/fire/firestore'
+
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
  
-  constructor() { }
+  constructor( private db: AngularFirestore, private auth:AngularFireAuth ) { }
 
   async login(user:user)
   { 
-    return firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+    return this.auth.signInWithEmailAndPassword(user.email, user.password)
   }
   
   async register(user:user)
   { 
-    return firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+    this.db.collection('usuarios').doc('pUTAwDdBwjIPV1irfP7B').valueChanges().subscribe(usuario=>{
+      console.log(usuario)
+    })
+    return this.auth.createUserWithEmailAndPassword(user.email, user.password)
   }
 async recuperarcontrasena(email:string){
-  return firebase.auth().sendPasswordResetEmail(email)
+  return this.auth.sendPasswordResetEmail(email)
 }
 async cerrarsesion() {
-  return firebase.auth().signOut()
+  return this.auth.signOut()
 }
 }
