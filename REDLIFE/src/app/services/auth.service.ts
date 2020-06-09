@@ -20,15 +20,30 @@ export class AuthService {
   
   async register(user:user)
   { 
-    this.db.collection('usuarios').doc('pUTAwDdBwjIPV1irfP7B').valueChanges().subscribe(usuario=>{
-      console.log(usuario)
-    })
+   
     return this.auth.createUserWithEmailAndPassword(user.email, user.password)
+      
+  
   }
 async recuperarcontrasena(email:string){
   return this.auth.sendPasswordResetEmail(email)
 }
 async cerrarsesion() {
   return this.auth.signOut()
+}
+async estadodesesion() {
+  return this.auth.onAuthStateChanged((user) =>{
+    if (user) {
+      console.log('singin');
+      this.db.collection('usuarios')
+      .valueChanges()
+      .subscribe(usuario => {
+         console.log(usuario);
+       })
+    }
+    else {
+      console.log('logout');
+    }
+  })
 }
 }
