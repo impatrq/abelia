@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import { user} from '../shared/user.class';
+import { FirestoreService} from '../services/firestore/firestore.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   user: user = new user ();
 
-  constructor(private authSvc: AuthService, private router: Router) { }
+  constructor(private authSvc: AuthService, private router: Router, private firestore: FirestoreService) { }
 
   ngOnInit() {
   }
