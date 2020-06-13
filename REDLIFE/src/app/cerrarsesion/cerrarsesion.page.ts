@@ -3,6 +3,9 @@ import {AuthService} from '../services/auth.service';
 import { FirestoreService} from '../services/firestore/firestore.service';
 import { user} from '../shared/user.class';
 import { Router } from '@angular/router';
+
+import { fichamedica } from '../shared/ficha-medica.class'
+
 @Component({
   selector: 'app-cerrarsesion',
   templateUrl: './cerrarsesion.page.html',
@@ -17,6 +20,7 @@ export class CerrarsesionPage implements OnInit {
   }
     /*this.firestore.getUsuarios().subscribe(usuarios=> {
       console.log(usuarios);
+      console.log(nombrecompleto)
     })*/
   
 async cerrarsesion()

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AngularFirestore } from '@angular/fire/firestore'
+import { fichamedica } from '../shared/ficha-medica.class';
+
 @Component({
   selector: 'app-ficha-medica',
   templateUrl: './ficha-medica.page.html',
@@ -7,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FichaMedicaPage implements OnInit {
 
-  constructor() { }
+  constructor( private db: AngularFirestore ) { }
 
-  ngOnInit() {
+  ngOnInit() {}
   }
 
-}
+
