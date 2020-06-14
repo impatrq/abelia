@@ -20,7 +20,6 @@ export class CerrarsesionPage implements OnInit {
   }
     /*this.firestore.getUsuarios().subscribe(usuarios=> {
       console.log(usuarios);
-      console.log(nombrecompleto)
     })*/
   
 async cerrarsesion()

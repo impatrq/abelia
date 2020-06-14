@@ -13,6 +13,7 @@ export class FichaMedicaPage implements OnInit {
   constructor( private db: AngularFirestore ) { }
 
   ngOnInit() {}
+
   }
 
 
