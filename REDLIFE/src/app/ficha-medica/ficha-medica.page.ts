@@ -9,7 +9,7 @@ import { fichamedica } from '../shared/ficha-medica.class';
   styleUrls: ['./ficha-medica.page.scss'],
 })
 export class FichaMedicaPage implements OnInit {
-
+  fichamedica: fichamedica= new fichamedica ();
   constructor( private db: AngularFirestore ) { }
 
   ngOnInit() {}

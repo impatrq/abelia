@@ -27,10 +27,11 @@ async cerrarsesion()
   this.authSvc.cerrarsesion()
   .then (()=>{
     console.log('se cerro sesión correctamente');
+    console.log();
     this.router.navigateByUrl('/login');
   })
   .catch (err=>{
-    console.log(err)
+    console.log()
   })
 }
 }
