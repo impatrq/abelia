@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FirestoreService } from '../services/firestore/firestore.service';
 import {AuthService} from '../services/auth.service';
 import { user} from '../shared/user.class';
 import { Router } from '@angular/router';
@@ -11,7 +12,7 @@ import { AngularFirestore } from '@angular/fire/firestore'
 })
 export class RegisterPage implements OnInit {
   user: user = new user ();
-  constructor(private authSvc: AuthService, private router: Router, private db: AngularFirestore ) { }
+  constructor(private authSvc: AuthService, private router: Router, private db: AngularFirestore, private fb: FirestoreService ) { }
 
   ngOnInit() { }
   async register() {
@@ -21,14 +22,7 @@ export class RegisterPage implements OnInit {
     console.log("Se Registro Exitosamente");
     const id= user.user.uid;
     this.user.id= id;
-    this.db.collection('usuarios').add({
-      email : user.user.email,
-      id : user.user.uid
-    })
-    /*doc('pUTAwDdBwjIPV1irfP7B')
-    .set({
-      email:  "ttt" }
-    */
+    this.fb.anadirusuario(user);    
     })
   .catch(err=>{
     console.log(err);
