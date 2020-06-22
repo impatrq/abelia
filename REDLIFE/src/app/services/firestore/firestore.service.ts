@@ -4,27 +4,57 @@ import { AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/firestore'
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../auth.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { switchMap, refCount } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
-//item=user
-//items=usuarios
-/*
-  usuariosCollection;
-  usuarioDoc;
-  usuarios: Observable<user[]>;*/
+  user:user;
+  private usuario: user;
+  private usuariomanejador: BehaviorSubject<user>;
+  private usuarioestado: Observable<user>;
 
   constructor (private db: AngularFirestore) {
+    this.usuario = undefined;
+    this.usuariomanejador = new BehaviorSubject<user>(undefined);
+    this.usuarioestado = this.usuariomanejador.asObservable();
+
+    this.usuarioestado.subscribe((usuarionuevo:user)=>{
+      this.usuario=usuarionuevo
+    })
+
   }
-   }
+anadirusuario(usuario){
+   this.db.collection('usuarios').add({
+    email : usuario.user.email,
+    id : usuario.user.uid
+    }).then((docRef)=>{
+      usuario.idfb = docRef.id;
+      usuario.id = usuario.user.uid;
+      usuario.email = usuario.user.email;
+      this.actualizarusuario(usuario);
+    })
+        
+    }
+  actualizarusuario(usuario:user){
+    this.usuario = usuario;
+    this.usuariomanejador.next(usuario);
+    console.log(this.usuario);
+  }  
+    //'items', ref => ref.where('size', '==', 'large'))
+  traercoleccion(){
+    this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges().subscribe((res)=>
+    console.log(res))
+    }
+    }
+  
    /*
    getUsuarios(){
      //return this.db.collection('usuarios').valueChanges();
    }
 }
- /* guardarregistroendb (){
+  guardarregistroendb (){
 
        this.db.collection('usuarios').doc(this.us.id).set({
          email= this.us.email;
