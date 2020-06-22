@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'pagina-inicial',
     loadChildren: () => import('./pagina-inicial/pagina-inicial.module').then( m => m.PaginaInicialPageModule)
   },
+  {
+    path: 'generarapodo',
+    loadChildren: () => import('./generarapodo/generarapodo.module').then( m => m.GenerarapodoPageModule)
+  },
 
 
 
