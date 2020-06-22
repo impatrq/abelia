@@ -3,6 +3,9 @@ import {AuthService} from '../services/auth.service';
 import { FirestoreService} from '../services/firestore/firestore.service';
 import { user} from '../shared/user.class';
 import { Router } from '@angular/router';
+
+import { fichamedica } from '../shared/ficha-medica.class'
+
 @Component({
   selector: 'app-cerrarsesion',
   templateUrl: './cerrarsesion.page.html',
@@ -27,7 +30,7 @@ async cerrarsesion()
     this.router.navigateByUrl('/login');
   })
   .catch (err=>{
-    console.log(err)
+    console.log()
   })
 }
 }
