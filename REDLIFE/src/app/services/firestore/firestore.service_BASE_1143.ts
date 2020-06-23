@@ -6,9 +6,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../auth.service';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { switchMap, refCount } from 'rxjs/operators';
-
-import { fichamedica } from '../../shared/ficha-medica.class'
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,12 +15,6 @@ export class FirestoreService {
   private usuariomanejador: BehaviorSubject<user>;
   private usuarioestado: Observable<user>;
 
-  DatosFichamedica:fichamedica;
-  private fichamedica: fichamedica;
-  private fichamedicamanejador: BehaviorSubject<fichamedica>;
-  private fichamedicaestado: Observable<fichamedica>;
-
-
   constructor (private db: AngularFirestore) {
     this.usuario = undefined;
     this.usuariomanejador = new BehaviorSubject<user>(undefined);
@@ -31,60 +22,32 @@ export class FirestoreService {
 
     this.usuarioestado.subscribe((usuarionuevo:user)=>{
       this.usuario=usuarionuevo
-
-
-    this.fichamedica = undefined;
-    this.fichamedicamanejador = new BehaviorSubject<fichamedica>(undefined);
-    this.fichamedicaestado = this.fichamedicamanejador.asObservable();
-
     })
 
   }
 anadirusuario(usuario){
-    this.db.collection('usuarios').add({
-    email : usuario.email,
-    id : usuario.id
+   this.db.collection('usuarios').add({
+    email : usuario.user.email,
+    id : usuario.user.uid
     }).then((docRef)=>{
       usuario.idfb = docRef.id;
+      usuario.id = usuario.user.uid;
+      usuario.email = usuario.user.email;
       this.actualizarusuario(usuario);
     })
         
-<<<<<<< HEAD
     }
-  actualizarusuario(usuario){
+  actualizarusuario(usuario:user){
     this.usuario = usuario;
     this.usuariomanejador.next(usuario);
     console.log(this.usuario);
   }  
-  generarapodo(apodo){
-    this.usuario.user= apodo;
-    this.actualizarusuario(this.usuario);
-    console.log(this.usuario);
-    this.db.collection('usuarios').doc(this.usuario.idfb).set({
-      user: this.usuario.user,
-      }, { merge: true }) //merge es para combinar datos
-       /*this.db.doc(this.user.idfb).set({
-      user: this.usuario.user
-    })*/
-
-    }
     //'items', ref => ref.where('size', '==', 'large'))
   traercoleccion(){
-    this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
-=======
-}
-actualizarusuario(usuario:user){
-    this.usuario = usuario;
-    this.usuariomanejador.next(usuario);
-    console.log(this.usuario);
-}  
-    //'items', ref => ref.where('size', '==', 'large'))
-traercoleccion(){
     this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges().subscribe((res)=>
     console.log(res))
->>>>>>> feature/FichaMedicaFirestoreIvan
     }
-}
+    }
   
    /*
    getUsuarios(){

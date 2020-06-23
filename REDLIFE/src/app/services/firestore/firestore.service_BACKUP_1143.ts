@@ -18,11 +18,6 @@ export class FirestoreService {
   private usuariomanejador: BehaviorSubject<user>;
   private usuarioestado: Observable<user>;
 
-  DatosFichamedica:fichamedica;
-  private fichamedica: fichamedica;
-  private fichamedicamanejador: BehaviorSubject<fichamedica>;
-  private fichamedicaestado: Observable<fichamedica>;
-
 
   constructor (private db: AngularFirestore) {
     this.usuario = undefined;
@@ -32,10 +27,6 @@ export class FirestoreService {
     this.usuarioestado.subscribe((usuarionuevo:user)=>{
       this.usuario=usuarionuevo
 
-
-    this.fichamedica = undefined;
-    this.fichamedicamanejador = new BehaviorSubject<fichamedica>(undefined);
-    this.fichamedicaestado = this.fichamedicamanejador.asObservable();
 
     })
 
@@ -49,7 +40,6 @@ anadirusuario(usuario){
       this.actualizarusuario(usuario);
     })
         
-<<<<<<< HEAD
     }
   actualizarusuario(usuario){
     this.usuario = usuario;
@@ -71,18 +61,6 @@ anadirusuario(usuario){
     //'items', ref => ref.where('size', '==', 'large'))
   traercoleccion(){
     this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
-=======
-}
-actualizarusuario(usuario:user){
-    this.usuario = usuario;
-    this.usuariomanejador.next(usuario);
-    console.log(this.usuario);
-}  
-    //'items', ref => ref.where('size', '==', 'large'))
-traercoleccion(){
-    this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges().subscribe((res)=>
-    console.log(res))
->>>>>>> feature/FichaMedicaFirestoreIvan
     }
 }
   
