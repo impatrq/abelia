@@ -49,7 +49,6 @@ anadirusuario(usuario){
       this.actualizarusuario(usuario);
     })
         
-<<<<<<< HEAD
     }
   actualizarusuario(usuario){
     this.usuario = usuario;
@@ -71,18 +70,6 @@ anadirusuario(usuario){
     //'items', ref => ref.where('size', '==', 'large'))
   traercoleccion(){
     this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
-=======
-}
-actualizarusuario(usuario:user){
-    this.usuario = usuario;
-    this.usuariomanejador.next(usuario);
-    console.log(this.usuario);
-}  
-    //'items', ref => ref.where('size', '==', 'large'))
-traercoleccion(){
-    this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges().subscribe((res)=>
-    console.log(res))
->>>>>>> feature/FichaMedicaFirestoreIvan
     }
 }
   
