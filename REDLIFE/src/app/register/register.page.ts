@@ -19,10 +19,11 @@ export class RegisterPage implements OnInit {
   this.authSvc.register(this.user)
     .then(user=>{
     this.router.navigateByUrl('instrucciones-ficha-medica');
-    console.log("Se Registro Exitosamente");
+    console.log("Se Registro Exitosamente", user, this.user);
     const id= user.user.uid;
     this.user.id= id;
-    this.fb.anadirusuario(user);    
+    this.user.email= user.user.email;
+    this.fb.anadirusuario(this.user);    
     })
   .catch(err=>{
     console.log(err);
