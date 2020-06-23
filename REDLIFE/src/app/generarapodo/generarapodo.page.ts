@@ -11,13 +11,17 @@ import { FirestoreService} from '../services/firestore/firestore.service';
   styleUrls: ['./generarapodo.page.scss'],
 })
 export class GenerarapodoPage implements OnInit {
-usuario: user
+apodo:string;
+
   constructor(private router: Router, private db: AngularFirestore,  private fb: FirestoreService) { }
 
   ngOnInit() {
   }
- traercoleccion() {
-  this.fb.traercoleccion()
+ //traercoleccion() {
+ // this.fb.traercoleccion()
+//}
+generarapodo(){
+ this.fb.generarapodo(this.apodo);
 }
 }
 
