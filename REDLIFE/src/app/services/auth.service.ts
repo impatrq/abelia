@@ -20,10 +20,7 @@ export class AuthService {
   
   async register(user:user)
   { 
-   
     return this.auth.createUserWithEmailAndPassword(user.email, user.password)
-      
-  
   }
 async recuperarcontrasena(email:string){
   return this.auth.sendPasswordResetEmail(email)
