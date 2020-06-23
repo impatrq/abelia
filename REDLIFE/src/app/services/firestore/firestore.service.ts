@@ -26,26 +26,35 @@ export class FirestoreService {
 
   }
 anadirusuario(usuario){
-   this.db.collection('usuarios').add({
-    email : usuario.user.email,
-    id : usuario.user.uid
+    this.db.collection('usuarios').add({
+    email : usuario.email,
+    id : usuario.id
     }).then((docRef)=>{
       usuario.idfb = docRef.id;
-      usuario.id = usuario.user.uid;
-      usuario.email = usuario.user.email;
       this.actualizarusuario(usuario);
     })
         
     }
-  actualizarusuario(usuario:user){
+  actualizarusuario(usuario){
     this.usuario = usuario;
     this.usuariomanejador.next(usuario);
     console.log(this.usuario);
   }  
+  generarapodo(apodo){
+    this.usuario.user= apodo;
+    this.actualizarusuario(this.usuario);
+    console.log(this.usuario);
+    this.db.collection('usuarios').doc(this.usuario.idfb).set({
+      user: this.usuario.user,
+      }, { merge: true }) //merge es para combinar datos
+       /*this.db.doc(this.user.idfb).set({
+      user: this.usuario.user
+    })*/
+
+    }
     //'items', ref => ref.where('size', '==', 'large'))
   traercoleccion(){
-    this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges().subscribe((res)=>
-    console.log(res))
+    this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
     }
     }
   
