@@ -6,9 +6,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../auth.service';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { switchMap, refCount } from 'rxjs/operators';
-
-import { fichamedica } from '../../shared/ficha-medica.class'
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,28 +14,16 @@ export class FirestoreService {
   private usuario: user;
   private usuariomanejador: BehaviorSubject<user>;
   private usuarioestado: Observable<user>;
-
-  DatosFichamedica:fichamedica;
-  private fichamedica: fichamedica;
-  private fichamedicamanejador: BehaviorSubject<fichamedica>;
-  private fichamedicaestado: Observable<fichamedica>;
-
+  private RefDb;
 
   constructor (private db: AngularFirestore) {
     this.usuario = undefined;
     this.usuariomanejador = new BehaviorSubject<user>(undefined);
     this.usuarioestado = this.usuariomanejador.asObservable();
-
     this.usuarioestado.subscribe((usuarionuevo:user)=>{
       this.usuario=usuarionuevo
-
-
-    this.fichamedica = undefined;
-    this.fichamedicamanejador = new BehaviorSubject<fichamedica>(undefined);
-    this.fichamedicaestado = this.fichamedicamanejador.asObservable();
-
     })
-
+    
   }
 anadirusuario(usuario){
     this.db.collection('usuarios').add({
@@ -53,7 +38,6 @@ anadirusuario(usuario){
   actualizarusuario(usuario){
     this.usuario = usuario;
     this.usuariomanejador.next(usuario);
-    console.log(this.usuario);
   }  
   generarapodo(apodo){
     this.usuario.user= apodo;
@@ -62,16 +46,29 @@ anadirusuario(usuario){
     this.db.collection('usuarios').doc(this.usuario.idfb).set({
       user: this.usuario.user,
       }, { merge: true }) //merge es para combinar datos
-       /*this.db.doc(this.user.idfb).set({
-      user: this.usuario.user
-    })*/
-
+    }
+  obtenernombredeusuario(){
+    const a = this.db.collection('usuarios').doc(this.usuario.idfb);
+    a.get().forEach((doc)=> {
+      console.log(doc.data().user);
+    })
+   /* this.traercoleccion().subscribe((res)=>{
+     console.log(res);      
+    })
+    DocumentReference docRef = db.collection("cities").document("BJ");
+docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+  @Override
+  public void onSuccess(DocumentSnapshot documentSnapshot) {
+      City city = documentSnapshot.toObject(City.class);
+  }
+});*/
+    //this.db.collection('usuarios').doc(this.usuario.idfb).data()
     }
     //'items', ref => ref.where('size', '==', 'large'))
   traercoleccion(){
-    this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
+    return this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
     }
-}
+    }
   
    /*
    getUsuarios(){
