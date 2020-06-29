@@ -6,6 +6,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../auth.service';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { switchMap, refCount } from 'rxjs/operators';
+
+import { fichamedica } from '../../shared/ficha-medica.class'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +19,11 @@ export class FirestoreService {
   private usuarioestado: Observable<user>;
   private RefDb;
 
+  fichamedica:fichamedica;
+  private datosfichamedica: fichamedica;
+  private datosfichamedicamanejador: BehaviorSubject<fichamedica>;
+  private datosfichamedicaestado: Observable<fichamedica>;
+
   constructor (private db: AngularFirestore) {
     this.usuario = undefined;
     this.usuariomanejador = new BehaviorSubject<user>(undefined);
@@ -24,6 +32,13 @@ export class FirestoreService {
       this.usuario=usuarionuevo
     })
     
+    this.datosfichamedica = undefined;
+    this.datosfichamedicamanejador = new BehaviorSubject<fichamedica>(undefined);
+    this.datosfichamedicaestado = this.datosfichamedicamanejador.asObservable();
+    this.datosfichamedicaestado.subscribe((datosfichamedicanuevos:fichamedica)=>{
+      this.datosfichamedica=datosfichamedicanuevos
+    })
+
   }
 anadirusuario(usuario){
     this.db.collection('usuarios').add({
