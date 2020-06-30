@@ -15,8 +15,9 @@ export class FichaMedicaPage implements OnInit {
 
   ngOnInit() {}
 
-
-
+  anadirdatosfichamedica(){
+    this.fb.anadirdatosfichamedica(this.fichamedica);
+  }
 
   }
 

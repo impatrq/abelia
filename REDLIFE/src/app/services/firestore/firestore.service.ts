@@ -83,6 +83,21 @@ docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
   traercoleccion(){
     return this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
     }
+
+    anadirdatosfichamedica(fichamedica){
+      this.db.collection('usuarios').add({
+        NombreCompleto: fichamedica.nombrecompleto,
+      }).then((docRef)=>{
+        fichamedica.idfb = docRef.id;
+        this.actualizarfichamedica(fichamedica);
+      })
+    }
+
+    actualizarfichamedica(fichamedica){
+      this.fichamedica = fichamedica;
+      this.datosfichamedicamanejador.next(fichamedica);
+    }
+
     }
   
    /*
