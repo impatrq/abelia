@@ -12,7 +12,7 @@ export class fichamedica {
     pisoydepartamento: string;
     localidadderesidencia: string;
     provinciaderesidencia: string;
-    numerodecontactodemergencia: number;
+    numerodecontactodeemergencia: number;
     nombrecompletodelmedico: string;
     numerodelmedico: number;
 }

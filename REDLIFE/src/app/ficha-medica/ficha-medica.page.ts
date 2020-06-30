@@ -15,8 +15,8 @@ export class FichaMedicaPage implements OnInit {
 
   ngOnInit() {}
 
-guardardatosfichamedica(){
-}
+
+
 
   }
 
