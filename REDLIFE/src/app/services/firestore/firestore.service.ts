@@ -87,6 +87,21 @@ docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
     anadirdatosfichamedica(fichamedica){
       this.db.collection('usuarios').doc(this.usuario.idfb).set({
         NombreCompleto: fichamedica.nombrecompleto,
+        Altura: fichamedica.altura,
+        Peso: fichamedica.peso,
+        Dni: fichamedica.dni,
+        FechaDeNacimiento: fichamedica.fechadenacimiento,
+        Sexo: fichamedica.sexo,
+        ObraSocial: fichamedica.obrasocial,
+        NumeroDeAfiliado: fichamedica.numerodeafiliado,
+        GrupoSanguineo: fichamedica.gruposanguineo,
+        DireccionDeResidencia: fichamedica.direccionderesidencia,
+        PisoYDepartamento: fichamedica.pisoydepartamento,
+        LocalidadDeResidencia: fichamedica.localidadderesidencia,
+        ProvinciaDeResidencia: fichamedica.provinciaderesidencia,
+        NumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
+        NombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
+        NumeroDelMedico: fichamedica.numerodelmedico,
       },{merge: true}).then((ivanelmejor)=>{
         fichamedica.idfb = ivanelmejor;
         this.actualizarfichamedica(fichamedica);
