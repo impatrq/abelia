@@ -96,16 +96,13 @@ docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
         NumeroDeAfiliado: fichamedica.numerodeafiliado,
         GrupoSanguineo: fichamedica.gruposanguineo,
         DireccionDeResidencia: fichamedica.direccionderesidencia,
-        PisoYDepartamento: fichamedica.pisoydepartamento,
+        PisoYoDepartamento: fichamedica.pisoydepartamento,
         LocalidadDeResidencia: fichamedica.localidadderesidencia,
         ProvinciaDeResidencia: fichamedica.provinciaderesidencia,
         NumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
         NombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
         NumeroDelMedico: fichamedica.numerodelmedico,
-      },{merge: true}).then((ivanelmejor)=>{
-        fichamedica.idfb = ivanelmejor;
-        this.actualizarfichamedica(fichamedica);
-      })
+      },{merge: true})
     }
 
     actualizarfichamedica(fichamedica){
