@@ -85,10 +85,10 @@ docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
     }
 
     anadirdatosfichamedica(fichamedica){
-      this.db.collection('usuarios').add({
+      this.db.collection('usuarios').doc(this.usuario.idfb).set({
         NombreCompleto: fichamedica.nombrecompleto,
-      }).then((ivanelmejor)=>{
-        fichamedica.idfb = ivanelmejor.id;
+      },{merge: true}).then((ivanelmejor)=>{
+        fichamedica.idfb = ivanelmejor;
         this.actualizarfichamedica(fichamedica);
       })
     }
