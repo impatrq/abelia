@@ -10,13 +10,14 @@ import { FirestoreService } from '../services/firestore/firestore.service'
   styleUrls: ['./ficha-medica.page.scss'],
 })
 export class FichaMedicaPage implements OnInit {
-  fichamedica: fichamedica= new fichamedica ();
+  fichamedica: fichamedica = new fichamedica;
   constructor( private db: AngularFirestore, private router: Router, private fb: FirestoreService ) { }
 
   ngOnInit() {}
 
   anadirdatosfichamedica(){
     this.fb.anadirdatosfichamedica(this.fichamedica);
+    console.log(this.fichamedica.nombrecompleto)
   }
 
   }
