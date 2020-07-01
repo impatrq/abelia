@@ -6,6 +6,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../auth.service';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { switchMap, refCount } from 'rxjs/operators';
+
+import { fichamedica } from '../../shared/ficha-medica.class'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +19,11 @@ export class FirestoreService {
   private usuarioestado: Observable<user>;
   private RefDb;
 
+  fichamedica:fichamedica;
+  private datosfichamedica: fichamedica;
+  private datosfichamedicamanejador: BehaviorSubject<fichamedica>;
+  private datosfichamedicaestado: Observable<fichamedica>;
+
   constructor (private db: AngularFirestore) {
     this.usuario = undefined;
     this.usuariomanejador = new BehaviorSubject<user>(undefined);
@@ -24,6 +32,13 @@ export class FirestoreService {
       this.usuario=usuarionuevo
     })
     
+    this.datosfichamedica = undefined;
+    this.datosfichamedicamanejador = new BehaviorSubject<fichamedica>(undefined);
+    this.datosfichamedicaestado = this.datosfichamedicamanejador.asObservable();
+    this.datosfichamedicaestado.subscribe((datosfichamedicanuevos:fichamedica)=>{
+      this.datosfichamedica=datosfichamedicanuevos
+    })
+
   }
 anadirusuario(usuario){
     this.db.collection('usuarios').add({
@@ -68,6 +83,33 @@ docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
   traercoleccion(){
     return this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
     }
+
+    anadirdatosfichamedica(fichamedica){
+      this.db.collection('usuarios').doc(this.usuario.idfb).set({
+        NombreCompleto: fichamedica.nombrecompleto,
+        Altura: fichamedica.altura,
+        Peso: fichamedica.peso,
+        Dni: fichamedica.dni,
+        FechaDeNacimiento: fichamedica.fechadenacimiento,
+        Sexo: fichamedica.sexo,
+        ObraSocial: fichamedica.obrasocial,
+        NumeroDeAfiliado: fichamedica.numerodeafiliado,
+        GrupoSanguineo: fichamedica.gruposanguineo,
+        DireccionDeResidencia: fichamedica.direccionderesidencia,
+        PisoYoDepartamento: fichamedica.pisoydepartamento,
+        LocalidadDeResidencia: fichamedica.localidadderesidencia,
+        ProvinciaDeResidencia: fichamedica.provinciaderesidencia,
+        NumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
+        NombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
+        NumeroDelMedico: fichamedica.numerodelmedico,
+      },{merge: true})
+    }
+
+    actualizarfichamedica(fichamedica){
+      this.fichamedica = fichamedica;
+      this.datosfichamedicamanejador.next(fichamedica);
+    }
+
     }
   
    /*
