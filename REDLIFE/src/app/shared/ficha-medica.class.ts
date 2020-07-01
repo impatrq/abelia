@@ -15,4 +15,5 @@ export class fichamedica {
     numerodecontactodeemergencia: number;
     nombrecompletodelmedico: string;
     numerodelmedico: number;
+    idfb: string;
 }
