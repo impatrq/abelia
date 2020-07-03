@@ -24,7 +24,7 @@ export class FichaMedicaEnfermedadesPage {
         {
           text: 'Continuar',
           handler: () => {
-            this.router.navigateByUrl('pagina-inicial');
+            this.router.navigateByUrl('generarapodo');
           }
         }
       ]
