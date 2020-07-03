@@ -22,7 +22,7 @@ apodo:string;
 //}
 generarapodo(){
  this.fb.generarapodo(this.apodo);
- this.fb.obtenernombredeusuario();
+ this.fb.traerdatoscontraercolleccion();
 }
 }
 
