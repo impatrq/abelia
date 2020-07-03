@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../auth.service';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { switchMap, refCount } from 'rxjs/operators';
+import { User } from 'firebase';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,8 +33,7 @@ anadirusuario(usuario){
     }).then((docRef)=>{
       usuario.idfb = docRef.id;
       this.actualizarusuario(usuario);
-    })
-        
+    })    
     }
   actualizarusuario(usuario){
     this.usuario = usuario;
@@ -52,7 +52,39 @@ anadirusuario(usuario){
     a.get().forEach((doc)=> {
       console.log(doc.data().user);
     })
-   /* this.traercoleccion().subscribe((res)=>{
+     }
+    traerdatos(){
+      const b = this.db.collection('usuarios').doc(this.usuario.idfb);
+      b.get().forEach((doc)=> {
+      console.log(doc.data().user);
+      console.log(doc.data().email);
+      console.log(doc.data().id);
+    })
+    }
+    traerdatoscontraercolleccion(){
+      this.traercoleccion();
+      this.RefDb.subscribe((res)=>{
+        res.forEach((usuario:user)=>{
+              this.actualizarusuario(usuario);
+              console.log('datos' , this.usuario);
+        })
+       })
+        }
+    /*traerdatoscontraercoleccion(){
+      this.traercoleccion();
+      this.RefDb.get().forEach((doc)=>{
+      console.log(doc);
+      /*.data().user);
+      console.log(doc.data().email);
+      console.log(doc.data().id);
+      })
+    } 
+  */
+    //'items', ref => ref.where('size', '==', 'large'))
+  traercoleccion(){
+   this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
+     }}
+    /* this.traercoleccion().subscribe((res)=>{
      console.log(res);      
     })
     DocumentReference docRef = db.collection("cities").document("BJ");
@@ -61,16 +93,9 @@ docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
   public void onSuccess(DocumentSnapshot documentSnapshot) {
       City city = documentSnapshot.toObject(City.class);
   }
-});*/
+});
     //this.db.collection('usuarios').doc(this.usuario.idfb).data()
-    }
-    //'items', ref => ref.where('size', '==', 'large'))
-  traercoleccion(){
-    return this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
-    }
-    }
-  
-   /*
+   
    getUsuarios(){
      //return this.db.collection('usuarios').valueChanges();
    }
