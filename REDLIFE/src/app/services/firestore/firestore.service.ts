@@ -102,6 +102,9 @@ anadirusuario(usuario){
             FMNumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
             FMNombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
             FMNumeroDelMedico: fichamedica.numerodelmedico,
+            FMVaricela: fichamedica.varicela,
+            FMSarampion: fichamedica.sarampion,
+            FMPaperas: fichamedica.paperas,
           },{merge: true})
         }
     
