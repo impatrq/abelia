@@ -84,6 +84,31 @@ anadirusuario(usuario){
         })
        })
         }
+        anadirdatosfichamedica(fichamedica){
+          this.db.collection('usuarios').doc(this.usuario.idfb).set({
+            NombreCompleto: fichamedica.nombrecompleto,
+            Altura: fichamedica.altura,
+            Peso: fichamedica.peso,
+            Dni: fichamedica.dni,
+            FechaDeNacimiento: fichamedica.fechadenacimiento,
+            Sexo: fichamedica.sexo,
+            ObraSocial: fichamedica.obrasocial,
+            NumeroDeAfiliado: fichamedica.numerodeafiliado,
+            GrupoSanguineo: fichamedica.gruposanguineo,
+            DireccionDeResidencia: fichamedica.direccionderesidencia,
+            PisoYoDepartamento: fichamedica.pisoydepartamento,
+            LocalidadDeResidencia: fichamedica.localidadderesidencia,
+            ProvinciaDeResidencia: fichamedica.provinciaderesidencia,
+            NumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
+            NombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
+            NumeroDelMedico: fichamedica.numerodelmedico,
+          },{merge: true})
+        }
+    
+        actualizarfichamedica(fichamedica){
+          this.fichamedica = fichamedica;
+          this.datosfichamedicamanejador.next(fichamedica);
+        }
     /*traerdatoscontraercoleccion(){
       this.traercoleccion();
       this.RefDb.get().forEach((doc)=>{
@@ -98,7 +123,7 @@ anadirusuario(usuario){
   traercoleccion(){
    this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
      }}
-    /* this.traercoleccion().subscribe((res)=>{
+    /*this.traercoleccion().subscribe((res)=>{
      console.log(res);      
     })
     DocumentReference docRef = db.collection("cities").document("BJ");
@@ -108,15 +133,14 @@ docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
       City city = documentSnapshot.toObject(City.class);
   }
 });
-    //this.db.collection('usuarios').doc(this.usuario.idfb).data()
-<<<<<<< HEAD
+    this.db.collection('usuarios').doc(this.usuario.idfb).data()
     }
-    //'items', ref => ref.where('size', '==', 'large'))
+    'items', ref => ref.where('size', '==', 'large'))
   traercoleccion(){
     return this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
-    }
+    }*/
 
-    anadirdatosfichamedica(fichamedica){
+    /*anadirdatosfichamedica(fichamedica){
       this.db.collection('usuarios').doc(this.usuario.idfb).set({
         NombreCompleto: fichamedica.nombrecompleto,
         Altura: fichamedica.altura,
@@ -142,12 +166,9 @@ docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
       this.datosfichamedicamanejador.next(fichamedica);
     }
 
-    }
+    }*/
   
    /*
-=======
-   
->>>>>>> feature/llamardatosdelusuario
    getUsuarios(){
      //return this.db.collection('usuarios').valueChanges();
    }
