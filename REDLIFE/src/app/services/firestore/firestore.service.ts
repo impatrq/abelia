@@ -86,22 +86,22 @@ anadirusuario(usuario){
         }
         anadirdatosfichamedica(fichamedica){
           this.db.collection('usuarios').doc(this.usuario.idfb).set({
-            NombreCompleto: fichamedica.nombrecompleto,
-            Altura: fichamedica.altura,
-            Peso: fichamedica.peso,
-            Dni: fichamedica.dni,
-            FechaDeNacimiento: fichamedica.fechadenacimiento,
-            Sexo: fichamedica.sexo,
-            ObraSocial: fichamedica.obrasocial,
-            NumeroDeAfiliado: fichamedica.numerodeafiliado,
-            GrupoSanguineo: fichamedica.gruposanguineo,
-            DireccionDeResidencia: fichamedica.direccionderesidencia,
-            PisoYoDepartamento: fichamedica.pisoydepartamento,
-            LocalidadDeResidencia: fichamedica.localidadderesidencia,
-            ProvinciaDeResidencia: fichamedica.provinciaderesidencia,
-            NumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
-            NombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
-            NumeroDelMedico: fichamedica.numerodelmedico,
+            FMNombreCompleto: fichamedica.nombrecompleto,
+            FMAltura: fichamedica.altura,
+            FMPeso: fichamedica.peso,
+            FMDni: fichamedica.dni,
+            FMFechaDeNacimiento: fichamedica.fechadenacimiento,
+            FMSexo: fichamedica.sexo,
+            FMObraSocial: fichamedica.obrasocial,
+            FMNumeroDeAfiliado: fichamedica.numerodeafiliado,
+            FMGrupoSanguineo: fichamedica.gruposanguineo,
+            FMDireccionDeResidencia: fichamedica.direccionderesidencia,
+            FMPisoYoDepartamento: fichamedica.pisoydepartamento,
+            FMLocalidadDeResidencia: fichamedica.localidadderesidencia,
+            FMProvinciaDeResidencia: fichamedica.provinciaderesidencia,
+            FMNumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
+            FMNombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
+            FMNumeroDelMedico: fichamedica.numerodelmedico,
           },{merge: true})
         }
     
