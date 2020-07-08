@@ -15,10 +15,10 @@
   
     <ion-item>
       <ion-label>Enfermedades, Alergias y/o Padecimientos</ion-label>
-      <ion-select multiple="true" cancelText="Cancelar" okText="Aceptar!">
-        <ion-select-option [(ngModel)]='fichamedica.varicela' value="varicela">Varicela</ion-select-option>
-        <ion-select-option [(ngModel)]='fichamedicae.sarampion' value="sarampion">Sarampion</ion-select-option>
-        <ion-select-option [(ngModel)]='fichamedica.paperas' value="paperas">Paperas</ion-select-option>
+      <ion-select [(ngModel)]='fichamedica.enfermedades' multiple="true" cancelText="Cancelar" okText="Aceptar!">
+        <ion-select-option value="varicela">Varicela</ion-select-option>
+        <ion-select-option value="sarampion">Sarampion</ion-select-option>
+        <ion-select-option value="paperas">Paperas</ion-select-option>
         <ion-select-option value="escarlatina">Escarlatina</ion-select-option>
         <ion-select-option value="epilepsia">Epilepsia</ion-select-option>
         <ion-select-option value="diabetes">Diabetes</ion-select-option>
@@ -78,6 +78,6 @@
   <ion-input placeholder="-Medicacion"></ion-input>
 
   <ion-button routerLink='/ficha-medica'>Atras</ion-button>
-  <ion-button (click)="anadirdatosfichamedica()" (click)="presentAlert()">Continuar!</ion-button>
+  <ion-button (click)="anadirdatosfichamedicaenfermedades()" (click)="presentAlert()">Continuar!</ion-button>
 
 </ion-content>

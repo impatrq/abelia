@@ -66,16 +66,16 @@ anadirusuario(usuario){
     a.get().forEach((doc)=> {
       console.log(doc.data().user);
     })
-     }
-    traerdatos(){
+  }
+  traerdatos(){
       const b = this.db.collection('usuarios').doc(this.usuario.idfb);
       b.get().forEach((doc)=> {
       console.log(doc.data().user);
       console.log(doc.data().email);
       console.log(doc.data().id);
     })
-    }
-    traerdatoscontraercolleccion(){
+  }
+  traerdatoscontraercolleccion(){
       this.traercoleccion();
       this.RefDb.subscribe((res)=>{
         res.forEach((usuario:user)=>{
@@ -83,8 +83,8 @@ anadirusuario(usuario){
               console.log('datos' , this.usuario);
         })
        })
-        }
-        anadirdatosfichamedica(fichamedica){
+  }
+  anadirdatosfichamedica(fichamedica){
           this.db.collection('usuarios').doc(this.usuario.idfb).set({
             FMNombreCompleto: fichamedica.nombrecompleto,
             FMAltura: fichamedica.altura,
@@ -102,16 +102,20 @@ anadirusuario(usuario){
             FMNumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
             FMNombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
             FMNumeroDelMedico: fichamedica.numerodelmedico,
-            FMVaricela: fichamedica.varicela,
-            FMSarampion: fichamedica.sarampion,
-            FMPaperas: fichamedica.paperas,
           },{merge: true})
-        }
+  }
     
-        actualizarfichamedica(fichamedica){
-          this.fichamedica = fichamedica;
-          this.datosfichamedicamanejador.next(fichamedica);
-        }
+        
+        
+
+  anadirdatosfichamedicaenfermedades(fichamedica){
+    this.db.collection('usuarios').doc(this.usuario.idfb).set({
+      FMEnfermedades: fichamedica.enfermedades,
+    },{merge: true})
+  }
+
+        
+        
     /*traerdatoscontraercoleccion(){
       this.traercoleccion();
       this.RefDb.get().forEach((doc)=>{

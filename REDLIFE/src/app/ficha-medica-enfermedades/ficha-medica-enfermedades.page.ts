@@ -37,8 +37,9 @@ export class FichaMedicaEnfermedadesPage {
     await alert.present();
   }
 
-  anadirdatosfichamedica(){
-    this.fb.anadirdatosfichamedica(this.fichamedica);
+  anadirdatosfichamedicaenfermedades(){
+    this.fb.anadirdatosfichamedicaenfermedades(this.fichamedica);
+    console.log(this.fichamedica.enfermedades)
   }
 
 }
