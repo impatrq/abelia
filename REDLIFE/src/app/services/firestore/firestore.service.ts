@@ -66,16 +66,16 @@ anadirusuario(usuario){
     a.get().forEach((doc)=> {
       console.log(doc.data().user);
     })
-     }
-    traerdatos(){
+  }
+  traerdatos(){
       const b = this.db.collection('usuarios').doc(this.usuario.idfb);
       b.get().forEach((doc)=> {
       console.log(doc.data().user);
       console.log(doc.data().email);
       console.log(doc.data().id);
     })
-    }
-    traerdatoscontraercolleccion(){
+  }
+  traerdatoscontraercolleccion(){
       this.traercoleccion();
       this.RefDb.subscribe((res)=>{
         res.forEach((usuario:user)=>{
@@ -83,32 +83,39 @@ anadirusuario(usuario){
               console.log('datos' , this.usuario);
         })
        })
-        }
-        anadirdatosfichamedica(fichamedica){
+  }
+  anadirdatosfichamedica(fichamedica){
           this.db.collection('usuarios').doc(this.usuario.idfb).set({
-            NombreCompleto: fichamedica.nombrecompleto,
-            Altura: fichamedica.altura,
-            Peso: fichamedica.peso,
-            Dni: fichamedica.dni,
-            FechaDeNacimiento: fichamedica.fechadenacimiento,
-            Sexo: fichamedica.sexo,
-            ObraSocial: fichamedica.obrasocial,
-            NumeroDeAfiliado: fichamedica.numerodeafiliado,
-            GrupoSanguineo: fichamedica.gruposanguineo,
-            DireccionDeResidencia: fichamedica.direccionderesidencia,
-            PisoYoDepartamento: fichamedica.pisoydepartamento,
-            LocalidadDeResidencia: fichamedica.localidadderesidencia,
-            ProvinciaDeResidencia: fichamedica.provinciaderesidencia,
-            NumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
-            NombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
-            NumeroDelMedico: fichamedica.numerodelmedico,
+            FMNombreCompleto: fichamedica.nombrecompleto,
+            FMAltura: fichamedica.altura,
+            FMPeso: fichamedica.peso,
+            FMDni: fichamedica.dni,
+            FMFechaDeNacimiento: fichamedica.fechadenacimiento,
+            FMSexo: fichamedica.sexo,
+            FMObraSocial: fichamedica.obrasocial,
+            FMNumeroDeAfiliado: fichamedica.numerodeafiliado,
+            FMGrupoSanguineo: fichamedica.gruposanguineo,
+            FMDireccionDeResidencia: fichamedica.direccionderesidencia,
+            FMPisoYoDepartamento: fichamedica.pisoydepartamento,
+            FMLocalidadDeResidencia: fichamedica.localidadderesidencia,
+            FMProvinciaDeResidencia: fichamedica.provinciaderesidencia,
+            FMNumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
+            FMNombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
+            FMNumeroDelMedico: fichamedica.numerodelmedico,
           },{merge: true})
-        }
+  }
     
-        actualizarfichamedica(fichamedica){
-          this.fichamedica = fichamedica;
-          this.datosfichamedicamanejador.next(fichamedica);
-        }
+        
+        
+
+  anadirdatosfichamedicaenfermedades(fichamedica){
+    this.db.collection('usuarios').doc(this.usuario.idfb).set({
+      FMEnfermedades: fichamedica.enfermedades,
+    },{merge: true})
+  }
+
+        
+        
     /*traerdatoscontraercoleccion(){
       this.traercoleccion();
       this.RefDb.get().forEach((doc)=>{

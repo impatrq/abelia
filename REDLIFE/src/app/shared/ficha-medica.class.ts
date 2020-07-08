@@ -16,4 +16,5 @@ export class fichamedica {
     nombrecompletodelmedico: string;
     numerodelmedico: number;
     idfb: string;
+    enfermedades: boolean;
 }
