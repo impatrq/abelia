@@ -1,16 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>FichaMedicaEnfermedades</ion-title>
+    <ion-title>Historial Clinico</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list-header>
-    <ion-label>
-      Enfermedades Y Medicaciones
-    </ion-label>
-  </ion-list-header>
-
+  
+  <ion-input value='Procesos Quirurgicos' readonly></ion-input>
+  <ion-input type='string' placeholder='Ej: Cirugias por salud, Cirugias estetticas, etc.'></ion-input>
+  <ion-input value='Enfermedades o Padecimeintos importantes' readonly></ion-input>
+  <ion-input type='string' placeholder='Ej: broncoespamos, colesterol, etc.'></ion-input>
+  <ion-input value='Medicamentos' readonly></ion-input>
+  <ion-input type='string' placeholder='Ej: medicamento X'></ion-input>
+  <ion-input value='Vacunas' readonly></ion-input>
+  <ion-input type='string' placeholder='Ej: antitetanica, covid-19, etc.'></ion-input>
+  
   <ion-button routerLink='/ficha-medica'>Atras</ion-button>
   <ion-button (click)='presentAlert()'>Continuar!</ion-button>
 
