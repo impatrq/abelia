@@ -103,6 +103,10 @@ anadirusuario(usuario){
             FMNumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
             FMNombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
             FMNumeroDelMedico: fichamedica.numerodelmedico,
+            FMEnfermedades: fichamedica.enfermedades,
+            FMMedicaciones: fichamedica.medicaciones,
+            FMOtraenfermedad: fichamedica.otraenfermedad,
+            FMOtramedicacion: fichamedica.otramedicacion,
           },{merge: true})
   }
     
