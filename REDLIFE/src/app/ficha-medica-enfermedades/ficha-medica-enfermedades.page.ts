@@ -33,11 +33,11 @@ export class FichaMedicaEnfermedadesPage {
         }
       ]
     });
-
     await alert.present();
   }
 
-  
-  
+  anadirdatosfichamedicaenfermedades(){
+    this.fb.anadirdatosfichamedicaenfermedades(this.fichamedica);
+  }
 
 }

@@ -21,4 +21,8 @@ export class fichamedica {
     medicaciones: boolean;
     otraenfermedad: string;
     otramedicacion: string;
+    operaciones: string;
+    enfermedadesviejas: string;
+    medicamentosviejos: string;
+    vacunasdadas: string;
 }

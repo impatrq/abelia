@@ -109,16 +109,17 @@ anadirusuario(usuario){
             FMOtramedicacion: fichamedica.otramedicacion,
           },{merge: true})
   }
-    
-        
-        
 
-  
-  
+  anadirdatosfichamedicaenfermedades(fichamedica){
+    this.db.collection('usuariois').doc(this.usuario.idfb).set({
+      HCOperaciones: fichamedica.operaciones,
+      HCEnfermedadesviejas: fichamedica.enfermedadesviejas,
+      HCMedicamentosviejos: fichamedica.medicamentosviejos,
+      HCVacunasdadas: fichamedica.vacunasdadas,
+    })
+  }  
 
-        
-        
-    /*traerdatoscontraercoleccion(){
+     /*traerdatoscontraercoleccion(){
       this.traercoleccion();
       this.RefDb.get().forEach((doc)=>{
       console.log(doc);

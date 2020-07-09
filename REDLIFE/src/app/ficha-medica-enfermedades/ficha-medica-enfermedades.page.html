@@ -7,15 +7,15 @@
 <ion-content>
   
   <ion-input value='Procesos Quirurgicos' readonly></ion-input>
-  <ion-input type='string' placeholder='Ej: Cirugias por salud, Cirugias estetticas, etc.'></ion-input>
+  <ion-input [(ngModel)]='fichamedica.operaciones' type='string' placeholder='Ej: Cirugias por salud, Cirugias estetticas, etc.'></ion-input>
   <ion-input value='Enfermedades o Padecimeintos importantes' readonly></ion-input>
-  <ion-input type='string' placeholder='Ej: broncoespamos, colesterol, etc.'></ion-input>
+  <ion-input [(ngModel)]='fichamedica.enfermedadesviejas' type='string' placeholder='Ej: broncoespamos, colesterol, etc.'></ion-input>
   <ion-input value='Medicamentos' readonly></ion-input>
-  <ion-input type='string' placeholder='Ej: medicamento X'></ion-input>
+  <ion-input [(ngModel)]='fichamedica.medicamentosviejos' type='string' placeholder='Ej: medicamento X'></ion-input>
   <ion-input value='Vacunas' readonly></ion-input>
-  <ion-input type='string' placeholder='Ej: antitetanica, covid-19, etc.'></ion-input>
+  <ion-input [(ngModel)]='fichamedica.vacunasdadas' type='string' placeholder='Ej: antitetanica, covid-19, etc.'></ion-input>
   
   <ion-button routerLink='/ficha-medica'>Atras</ion-button>
-  <ion-button (click)='presentAlert()'>Continuar!</ion-button>
+  <ion-button (click)='anadirdatosfichamedicaenfermedades()' (click)='presentAlert()'>Continuar!</ion-button>
 
 </ion-content>
