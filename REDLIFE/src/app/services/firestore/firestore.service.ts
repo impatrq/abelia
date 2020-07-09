@@ -87,6 +87,7 @@ anadirusuario(usuario){
   anadirdatosfichamedica(fichamedica){
           this.db.collection('usuarios').doc(this.usuario.idfb).set({
             FMNombreCompleto: fichamedica.nombrecompleto,
+            FMEdad: fichamedica.edad,
             FMAltura: fichamedica.altura,
             FMPeso: fichamedica.peso,
             FMDni: fichamedica.dni,

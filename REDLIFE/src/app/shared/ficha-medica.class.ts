@@ -1,5 +1,6 @@
 export class fichamedica {
     nombrecompleto: string;
+    edad: number;
     altura: number;
     peso: number;
     dni: number;
