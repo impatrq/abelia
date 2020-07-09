@@ -87,6 +87,7 @@ anadirusuario(usuario){
   anadirdatosfichamedica(fichamedica){
           this.db.collection('usuarios').doc(this.usuario.idfb).set({
             FMNombreCompleto: fichamedica.nombrecompleto,
+            FMEdad: fichamedica.edad,
             FMAltura: fichamedica.altura,
             FMPeso: fichamedica.peso,
             FMDni: fichamedica.dni,
@@ -102,21 +103,23 @@ anadirusuario(usuario){
             FMNumeroDeContactoDeEmergencia: fichamedica.numerodecontactodeemergencia,
             FMNombreCompletoDelMedico: fichamedica.nombrecompletodelmedico,
             FMNumeroDelMedico: fichamedica.numerodelmedico,
+            FMEnfermedades: fichamedica.enfermedades,
+            FMMedicaciones: fichamedica.medicaciones,
+            FMOtraenfermedad: fichamedica.otraenfermedad,
+            FMOtramedicacion: fichamedica.otramedicacion,
           },{merge: true})
   }
-    
-        
-        
 
   anadirdatosfichamedicaenfermedades(fichamedica){
     this.db.collection('usuarios').doc(this.usuario.idfb).set({
-      FMEnfermedades: fichamedica.enfermedades,
-    },{merge: true})
-  }
+      HCOperaciones: fichamedica.operaciones,
+      HCEnfermedadesviejas: fichamedica.enfermedadesviejas,
+      HCMedicamentosviejos: fichamedica.medicamentosviejos,
+      HCVacunasdadas: fichamedica.vacunasdadas,
+    })
+  }  
 
-        
-        
-    /*traerdatoscontraercoleccion(){
+     /*traerdatoscontraercoleccion(){
       this.traercoleccion();
       this.RefDb.get().forEach((doc)=>{
       console.log(doc);
