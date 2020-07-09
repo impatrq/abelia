@@ -109,11 +109,8 @@ anadirusuario(usuario){
         
         
 
-  anadirdatosfichamedicaenfermedades(fichamedica){
-    this.db.collection('usuarios').doc(this.usuario.idfb).set({
-      FMEnfermedades: fichamedica.enfermedades,
-    },{merge: true})
-  }
+  
+  
 
         
         

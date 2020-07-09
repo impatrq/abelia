@@ -7,48 +7,91 @@
 <ion-content>
 
   <ion-item>
-    <ion-input value="Ficha Medica:" readonly></ion-input>
+    <ion-input value="Datos Personales:" readonly></ion-input>
   </ion-item>
 
   <ion-input value="Por Favor, Lea detalladamente y complete a Consciencia" readonly></ion-input>
 
   <ion-input [(ngModel)]='fichamedica.nombrecompleto' type='string' placeholder="Nombre Completo (obligatorio)*"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.edad' type='string' placeholder="Edad (obligatorio)*"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.altura' type='number' placeholder="Altura en Centimetros (obligatorio)*"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.peso' type='number' placeholder="Peso en Kilos (obligatorio)*"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.dni' type='number' placeholder="DNI o Numero de Libreta de Identificacion"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.fechadenacimiento' type='string' placeholder="Fecha de Nacimiento (obligatorio)*"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.sexo' type='string' placeholder="Sexo (obligatorio)*"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.obrasocial' type='string' placeholder="Obra Social"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.numerodeafiliado' type='number' placeholder="Numero de Afiliado (en caso de que haya)"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.gruposanguineo' type='string' placeholder="Grupo Sanguineo"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.direccionderesidencia' type='string' placeholder="Direccion Actual de Residencia (obligatorio)*"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.pisoydepartamento' type='string' placeholder="Piso y Departamento (opcional)"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.localidadderesidencia' type='string' placeholder="Localidad de Residencia"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.provinciaderesidencia' type='string' placeholder="Provincia de Residencia"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.numerodecontactodeemergencia' type='number' placeholder="Numero de Contacto de Emergencia (obligatorio)*"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.nombrecompletodelmedico' type='string' placeholder="Nombre Completo de Medico de Cabecera"></ion-input>
-
   <ion-input [(ngModel)]='fichamedica.numerodelmedico' type='number' placeholder="Numero de Contacto de Medico de Cabecera"></ion-input>
 
   <ion-input value="*Los campos obligatorios son para brindar la informacion" readonly></ion-input>
-
   <ion-input value="necesaria en caso de Emergencia.*" readonly></ion-input>
+
+  <ion-item>
+    <ion-input value="Situacion de Salud Actual" readonly></ion-input>
+  </ion-item>
+  <ion-input value='A continuacion, solicitaremos que complete los campos' readonly></ion-input>
+  <ion-input value='con las Enfermedades, Alergias, Padecimientos y/o' readonly></ion-input>
+  <ion-input value='Medicamentos que padece/consume ACTUALMENTE.' readonly></ion-input>
+
+  <ion-item>
+    <ion-label>Enfermedades, Alergias y/o Padecimientos</ion-label>
+    <ion-select [(ngModel)]='fichamedica.enfermedades' multiple="true" cancelText="Cancelar" okText="Aceptar!">
+      <ion-select-option value="varicela">Varicela</ion-select-option>
+      <ion-select-option value="sarampion">Sarampion</ion-select-option>
+      <ion-select-option value="paperas">Paperas</ion-select-option>
+      <ion-select-option value="escarlatina">Escarlatina</ion-select-option>
+      <ion-select-option value="epilepsia">Epilepsia</ion-select-option>
+      <ion-select-option value="diabetes">Diabetes</ion-select-option>
+      <ion-select-option value="epoc">Epoc</ion-select-option>
+      <ion-select-option value="fibrosis">Fibrosis</ion-select-option>
+      <ion-select-option value="celiaquia">Celiaquia</ion-select-option>
+      <ion-select-option value="diarreacronica">Diarrea Cronica</ion-select-option>
+      <ion-select-option value="hepatitis">Hepatitis</ion-select-option>
+      <ion-select-option value="lupus">Lupus</ion-select-option>
+      <ion-select-option value="leucemia">Leucemia</ion-select-option>
+      <ion-select-option value="obesidad">Obesidad</ion-select-option>
+      <ion-select-option value="otraEnfermedad">Otra</ion-select-option>
+      <ion-select-option value="convulsiones">Convulsiones</ion-select-option>
+      <ion-select-option value="tosconvulsiva">Tos Convulsiva</ion-select-option>
+      <ion-select-option value="sonambulismo">Sonambulismo</ion-select-option>
+      <ion-select-option value="sinusitis">Sinusitis</ion-select-option>
+      <ion-select-option value="tratamientoinsulina">Tratamiento con Insulina</ion-select-option>
+      <ion-select-option value="asma">Asma</ion-select-option>
+      <ion-select-option value="asmasevero">Asma Severo</ion-select-option>
+      <ion-select-option value="enurecis">Enuresis</ion-select-option>
+      <ion-select-option value="gastritis">Grastritis</ion-select-option>
+      <ion-select-option value="insuficienciarenal">Insuficiencia Renal</ion-select-option>
+      <ion-select-option value="sangradonasal">Sangrado Nasal</ion-select-option>
+      <ion-select-option value="anemia">Anemia</ion-select-option>
+      <ion-select-option value="broncoespasmos">Broncoespsamos</ion-select-option>
+      <ion-select-option value="hipertension">Hipertension</ion-select-option>
+      <ion-select-option value="otroPadecimiento">Otro</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Medicacion</ion-label>
+    <ion-select multiple="true" cancelText="Cancelar" okText="Aceptar!">
+      <ion-select-option value="medicacion1">Medicacion 1</ion-select-option>
+      <ion-select-option value="medicacion2">Medicacion 2</ion-select-option>
+      <ion-select-option value="medicacion3">Medicacion 3</ion-select-option>
+      <ion-select-option value="otraMedicacion">Otra</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-text><h1>Si su Enfermedad, Alergia, Padecimiento o Medicacion no aparecen en la lista anterior y selecciono 'otra', Por favor, complete los siguientes campos:</h1></ion-text>
+
+  <ion-input placeholder="-Enfermedad"></ion-input>
+  <ion-input placeholder="-Alergia"></ion-input>
+  <ion-input placeholder="-Padecimiento"></ion-input>
+  <ion-input placeholder="-Medicacion"></ion-input>
 
   <ion-button routerLink='/instrucciones-ficha-medica'>Atras</ion-button>
   <ion-button (click)=anadirdatosfichamedica() routerLink='/ficha-medica-enfermedades'>Continuar!</ion-button>
