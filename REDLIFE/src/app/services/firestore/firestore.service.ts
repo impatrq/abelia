@@ -111,7 +111,7 @@ anadirusuario(usuario){
   }
 
   anadirdatosfichamedicaenfermedades(fichamedica){
-    this.db.collection('usuariois').doc(this.usuario.idfb).set({
+    this.db.collection('usuarios').doc(this.usuario.idfb).set({
       HCOperaciones: fichamedica.operaciones,
       HCEnfermedadesviejas: fichamedica.enfermedadesviejas,
       HCMedicamentosviejos: fichamedica.medicamentosviejos,
