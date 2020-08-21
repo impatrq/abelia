@@ -1,10 +1,16 @@
 // The Cloud Functions for Firebase SDK to create Cloud Functions and setup triggers.
 const functions = require('firebase-functions');
 
+const serviceAccount = require('./keysdk.json');
+
+
 // The Firebase Admin SDK to access Cloud Firestore.
 const admin = require('firebase-admin');
 
-admin.initializeApp();
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://abelia.firebaseio.com"
+});
 
 // Take the text parameter passed to this HTTP endpoint and insert it into
 // Cloud Firestore under the path /messages/:documentId/original
