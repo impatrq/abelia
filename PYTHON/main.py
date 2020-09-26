@@ -1,6 +1,6 @@
 # http request usando python
 import requests
-URL="http://localhost:5000/abelia/us-central1/agregarMedicion"
+URL="http://127.0.0.1:5000/abelia/us-central1/agregarMedicion"
 movimiento = "1"
 ritmo = "180"
 user_id = "94444444"
