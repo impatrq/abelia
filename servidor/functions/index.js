@@ -40,8 +40,9 @@ exports.leerMediciones = functions.https.onRequest(async (req, res) => {
   let ritmo = 0;
   medicion.forEach((medicion)=>{
     ritmo = medicion.data().ritmo_cardiaco
+    movimiento = medicion.data().movimiento
   })
-
+    console.log(ritmo, movimiento);
 
   // Send back a message that we've succesfully written the message
   res.json({ result: ritmo });
