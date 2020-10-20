@@ -47,3 +47,4 @@ exports.leerMediciones = functions.https.onRequest(async (req, res) => {
   // Send back a message that we've succesfully written the message
   res.json({ result: ritmo });
 });
+
