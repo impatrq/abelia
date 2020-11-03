@@ -118,7 +118,10 @@ anadirusuario(usuario){
       HCVacunasdadas: fichamedica.vacunasdadas,
     })
   }  
-
+  traercoleccion(){
+   this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
+     }
+}
      /*traerdatoscontraercoleccion(){
       this.traercoleccion();
       this.RefDb.get().forEach((doc)=>{
@@ -130,9 +133,7 @@ anadirusuario(usuario){
     } 
   */
     //'items', ref => ref.where('size', '==', 'large'))
-  traercoleccion(){
-   this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
-     }}
+
     /*this.traercoleccion().subscribe((res)=>{
      console.log(res);      
     })
