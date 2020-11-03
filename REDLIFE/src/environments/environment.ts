@@ -15,7 +15,7 @@ export const environment = {
     measurementId: "G-GR0YED1R27"
   }
   // Initialize Firebase
-  initializeApp(firebaseConfig);
+  //initializeApp(firebaseConfig);
 };
 
 /*
