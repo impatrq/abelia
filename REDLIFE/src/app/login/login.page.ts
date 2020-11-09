@@ -38,11 +38,11 @@ export class LoginPage implements OnInit {
 
     async presentAlert() {
       const alert = await this.alertController.create({
-        header: 'Importante!',
-        message: 'Por favor revise los datos ingresados porque son importantes en caso de emergencia. Igualmente, estos podran ser modificados mas adelante.',
+        header: '¡Importante!',
+        message: 'Cuando oprima "Continuar" va a ser redirigido a la pestaña de recuperación de la contraseña. Por favor, lea con atención las instrucciones.',
         buttons: [
           {
-            text: 'Revisar',
+            text: 'Cancelar',
             role: 'cancel',
             handler: () => {}
           },

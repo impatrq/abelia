@@ -17,7 +17,7 @@ export class FichaMedicaEnfermedadesPage {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      header: 'Importante!',
+      header: '¡Importante!',
       message: 'Por favor revise los datos ingresados porque son importantes en caso de emergencia. Igualmente, estos podran ser modificados mas adelante.',
       buttons: [
         {

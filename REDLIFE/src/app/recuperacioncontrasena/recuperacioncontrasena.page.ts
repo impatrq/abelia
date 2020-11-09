@@ -24,14 +24,9 @@ export class RecuperacioncontrasenaPage implements OnInit {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      header: 'Importante!',
-      message: 'Por favor revise los datos ingresados porque son importantes en caso de emergencia. Igualmente, estos podran ser modificados mas adelante.',
+      header: '¡Importante!',
+      message: 'El mensaje ha sido enviado al mail introducido. Por favor, corrobore que asi sea y reestablezca la contraseña, luego intente ingresar nuevamente en la pestaña de Inicio de Sesión.',
       buttons: [
-        {
-          text: 'Revisar',
-          role: 'cancel',
-          handler: () => {}
-        },
         {
           text: 'Continuar',
           handler: () => {
