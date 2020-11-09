@@ -1,15 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>recuperacion contraseña</ion-title>
+    <ion-title>Password recovery</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-input [(ngModel)]='email' placeholder='Email' type='string'>
-  </ion-input>
-  <ion-button (click)=recuperarcontrasena()>
-    Confirmar
-  </ion-button>
+  <ion-input class="centro" [(ngModel)]='email' placeholder='Dirección de Correo Elctrónico' type='string'></ion-input>
+
+  <ion-button class='posicioningresar' (click)=recuperarcontrasena()>Confirmar</ion-button>
 
 </ion-content>
