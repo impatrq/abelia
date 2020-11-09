@@ -3,6 +3,8 @@ import {AuthService} from '../services/auth.service';
 import { user} from '../shared/user.class';
 import { FirestoreService} from '../services/firestore/firestore.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   user: user = new user ();
 
-  constructor(private authSvc: AuthService, private router: Router, private firestore: FirestoreService) { }
+  constructor(public alertController: AlertController, private authSvc: AuthService, private router: Router, private firestore: FirestoreService) { }
 
   ngOnInit() {
   }
@@ -33,4 +35,26 @@ export class LoginPage implements OnInit {
        }
       })
     }
+
+    async presentAlert() {
+      const alert = await this.alertController.create({
+        header: 'Importante!',
+        message: 'Por favor revise los datos ingresados porque son importantes en caso de emergencia. Igualmente, estos podran ser modificados mas adelante.',
+        buttons: [
+          {
+            text: 'Revisar',
+            role: 'cancel',
+            handler: () => {}
+          },
+          {
+            text: 'Continuar',
+            handler: () => {
+              this.router.navigateByUrl('recuperacioncontrasena');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
   }
+  
