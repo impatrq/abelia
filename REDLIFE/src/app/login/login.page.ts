@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
   async login() {
     this.authSvc.login(this.user)
      .then(user=>{
-       this.router.navigateByUrl('/cerrarsesion');
+       this.router.navigateByUrl('/pagina-inicial');
        console.log('Inició sesión correctamente');
       })
      .catch(err=> {
