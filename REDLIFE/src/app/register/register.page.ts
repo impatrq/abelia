@@ -4,7 +4,9 @@ import {AuthService} from '../services/auth.service';
 import { user} from '../shared/user.class';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { MessagingService } from '../services/messaging.service';
 import { AngularFirestore } from '@angular/fire/firestore'
+import { async } from '@angular/core/testing';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -12,19 +14,20 @@ import { AngularFirestore } from '@angular/fire/firestore'
 })
 export class RegisterPage implements OnInit {
   user: user = new user ();
-  constructor(private authSvc: AuthService, private router: Router, private db: AngularFirestore, private fb: FirestoreService ) { }
+  constructor(private authSvc: AuthService,  private messagingService: MessagingService, private router: Router, private db: AngularFirestore, private fb: FirestoreService ) { }
 
   ngOnInit() { }
   async register() {
-  this.authSvc.register(this.user)
+    this.authSvc.register(this.user)
     .then(user=>{
-    this.router.navigateByUrl('instrucciones-ficha-medica');
     console.log("Se Registro Exitosamente", user, this.user);
     const id= user.user.uid;
     this.user.id= id;
     this.user.email= user.user.email;
-    this.fb.anadirusuario(this.user);    
-    })
+    this.fb.anadirusuario(this.user);
+    this.router.navigateByUrl('instrucciones-ficha-medica');
+   
+            })
   .catch(err=>{
     console.log(err);
     switch
@@ -36,5 +39,5 @@ export class RegisterPage implements OnInit {
     }
   })
   }
-   }
+}
 

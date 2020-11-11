@@ -3,6 +3,7 @@ import {AuthService} from '../services/auth.service';
 import { user} from '../shared/user.class';
 import { FirestoreService} from '../services/firestore/firestore.service';
 import { Router } from '@angular/router';
+import { MessagingService } from '../services/messaging.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,17 +12,19 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   user: user = new user ();
 
-  constructor(private authSvc: AuthService, private router: Router, private firestore: FirestoreService) { }
+  constructor(private authSvc: AuthService, private router: Router, private firestore: FirestoreService, private messagingService: MessagingService) { }
 
   ngOnInit() {
   }
   async login() {
-    this.authSvc.login(this.user)
+     this.authSvc.login(this.user)
      .then(user=>{
+       this.firestore.traerconuidaliniciarsesion(user.user.uid);
        this.router.navigateByUrl('/cerrarsesion');
        console.log('Inició sesión correctamente');
+       //si se pone algo mas cambiar cerrarsesion por el token
       })
-     .catch(err=> {
+       .catch(err=> {
        console.log(err);
         switch
        (err.code){

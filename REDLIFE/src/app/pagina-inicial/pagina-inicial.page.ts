@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessagingService } from '../services/messaging.service';
 import {FirestoreService} from '../services/firestore/firestore.service';
+import { user } from '../shared/user.class';
 @Component({
   selector: 'app-pagina-inicial',
   templateUrl: './pagina-inicial.page.html',
@@ -8,8 +9,6 @@ import {FirestoreService} from '../services/firestore/firestore.service';
 })
 
 export class PaginaInicialPage implements OnInit {
-   constructor(private angularFireMessaging: MessagingService) { }
-    ngOnInit() {}
-  async receiveMessage() {
-        this.angularFireMessaging.receiveMessage()
-  }}
+  user:user;
+   constructor(private angularFireMessaging: MessagingService, private firestore: FirestoreService) { }
+    ngOnInit() {}}

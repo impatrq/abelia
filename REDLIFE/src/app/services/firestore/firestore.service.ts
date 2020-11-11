@@ -6,7 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../auth.service';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { switchMap, refCount } from 'rxjs/operators';
-
+import { MessagingService } from '../messaging.service';
 import { fichamedica } from '../../shared/ficha-medica.class'
 
 @Injectable({
@@ -18,7 +18,7 @@ export class FirestoreService {
   private usuariomanejador: BehaviorSubject<user>;
   private usuarioestado: Observable<user>;
   private RefDb;
-
+  private token;
   fichamedica:fichamedica;
   private datosfichamedica: fichamedica;
   private datosfichamedicamanejador: BehaviorSubject<fichamedica>;
@@ -61,6 +61,13 @@ anadirusuario(usuario){
       user: this.usuario.user,
       }, { merge: true }) //merge es para combinar datos
     }
+    anadirtoken(token){
+      this.usuario.token= token;
+      this.actualizarusuario(this.usuario);
+      this.db.collection('usuarios').doc(this.usuario.idfb).set({
+        token: this.usuario.token,
+        }, { merge: true }) //merge es para combinar datos
+      }
   obtenernombredeusuario(){
     const a = this.db.collection('usuarios').doc(this.usuario.idfb);
     a.get().forEach((doc)=> {
@@ -118,10 +125,27 @@ anadirusuario(usuario){
       HCVacunasdadas: fichamedica.vacunasdadas,
     })
   }  
+  traerconuidaliniciarsesion(id){
+    console.log(id);
+    this.usuario.id= id;
+    this.actualizarusuario(this.usuario.id);
+  }
   traercoleccion(){
-   this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id)).valueChanges()
+   this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id,)).valueChanges()
      }
-}
+  actualizartoken(token1){
+      console.log(token1);
+      console.log(this.usuario);
+      this.usuario.token= token1;
+      this.actualizarusuario(this.usuario);
+      console.log(this.usuario);
+      //this.db.collection('usuarios').doc(this.usuario.idfb).update({
+       // 'token': this.usuario.token,
+        //})
+    }
+  }
+    
+
      /*traerdatoscontraercoleccion(){
       this.traercoleccion();
       this.RefDb.get().forEach((doc)=>{

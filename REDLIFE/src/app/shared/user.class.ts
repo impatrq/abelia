@@ -4,4 +4,5 @@ export class user {
     id: string;
     user: string;
     idfb: string;
+    token: string;
 }

@@ -19,10 +19,7 @@ export class AppComponent {
     public messagingService: MessagingService,
     ) {
     this.initializeApp();
-    this.messagingService.requestPermission()
-    this.messagingService.receiveMessage()
-    this.message = this.messagingService.currentMessage
-  }
+      }
   
    
   

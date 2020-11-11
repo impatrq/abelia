@@ -4,31 +4,31 @@ import { AngularFireFunctions} from '@angular/fire/functions';
 import { ToastController } from '@ionic/angular';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs'
+import {FirestoreService} from '../services/firestore/firestore.service';
 @Injectable({
   providedIn: 'root'
 })
 export class MessagingService {
   currentMessage = new BehaviorSubject(null);
-      constructor(private angularFireMessaging: AngularFireMessaging)
+      constructor(private angularFireMessaging: AngularFireMessaging, private db:FirestoreService )
        {
           this.angularFireMessaging.messages.subscribe()
           }
         
+      existeeltoken(){
+        this.angularFireMessaging.getToken.subscribe(
+          (token) => { 
+            const token2 = token;
+            this.db.actualizartoken(token2);
+           })}
+  
       requestPermission() {
       this.angularFireMessaging.requestToken.subscribe(
       (token) => {
-      console.log('hola:' + token + 'ddd');
-      },
-      (err) => {
-      console.error('Unable to get permission to notify.', err);
-      }
-      );
-      }
-      receiveMessage() {
-      this.angularFireMessaging.messages.subscribe(
-      (payload) => {
-      console.log("new message received. ", payload);
-      this.currentMessage.next(payload);
+      console.log(token);
+      const token1= token;
+      this.db.anadirtoken(token1);
       })
-      }
-      }
+    
+      }}
+    

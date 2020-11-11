@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MessagingService } from '../services/messaging.service';
 @Component({
   selector: 'app-instrucciones-ficha-medica',
   templateUrl: './instrucciones-ficha-medica.page.html',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstruccionesFichaMedicaPage implements OnInit {
 
-  constructor() { }
+  constructor(private messagingService: MessagingService) { }
 
   ngOnInit() {
   }
-
+  async guardartoken()
+  {this.messagingService.requestPermission();}
 }
