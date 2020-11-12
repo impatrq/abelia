@@ -18,19 +18,19 @@
   <ion-input class='centrado' [(ngModel)]='fichamedica.edad' type='string' placeholder="Edad (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.altura' type='number' placeholder="Altura en Centimetros (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.peso' type='number' placeholder="Peso en Kilos (obligatorio)*"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.dni' type='number' placeholder="DNI o Numero de Libreta de Identificacion"></ion-input>
+  <ion-input class='centrado' [(ngModel)]='fichamedica.dni' type='number' placeholder="DNI o Número de Libreta de Identificación"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.fechadenacimiento' type='string' placeholder="Fecha de Nacimiento (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.sexo' type='string' placeholder="Sexo (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.obrasocial' type='string' placeholder="Obra Social"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.numerodeafiliado' type='number' placeholder="Numero de Afiliado (en caso de que haya)"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.gruposanguineo' type='string' placeholder="Grupo Sanguineo"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.direccionderesidencia' type='string' placeholder="Direccion Actual de Residencia (obligatorio)*"></ion-input>
+  <ion-input class='centrado' [(ngModel)]='fichamedica.numerodeafiliado' type='number' placeholder="Número de Afiliado (en caso de que haya)"></ion-input>
+  <ion-input class='centrado' [(ngModel)]='fichamedica.gruposanguineo' type='string' placeholder="Grupo Sanguíneo"></ion-input>
+  <ion-input class='centrado' [(ngModel)]='fichamedica.direccionderesidencia' type='string' placeholder="Dirección Actual de Residencia (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.pisoydepartamento' type='string' placeholder="Piso y Departamento (opcional)"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.localidadderesidencia' type='string' placeholder="Localidad de Residencia"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.provinciaderesidencia' type='string' placeholder="Provincia de Residencia"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.numerodecontactodeemergencia' type='number' placeholder="Numero de Contacto de Emergencia (obligatorio)*"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.nombrecompletodelmedico' type='string' placeholder="Nombre Completo de Medico de Cabecera"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.numerodelmedico' type='number' placeholder="Numero de Contacto de Medico de Cabecera"></ion-input>
+  <ion-input class='centrado' [(ngModel)]='fichamedica.numerodecontactodeemergencia' type='number' placeholder="Número de Contacto de Emergencia (obligatorio)*"></ion-input>
+  <ion-input class='centrado' [(ngModel)]='fichamedica.nombrecompletodelmedico' type='string' placeholder="Nombre Completo de Médico de Cabecera"></ion-input>
+  <ion-input class='centrado' [(ngModel)]='fichamedica.numerodelmedico' type='number' placeholder="Número de Contacto de Médico de Cabecera"></ion-input>
 
   
 
@@ -44,7 +44,7 @@
     <ion-label>Enfermedades, Alergias y/o Padecimientos</ion-label>
     <ion-select class='centrado' [(ngModel)]='fichamedica.enfermedades' multiple="true" cancelText="Cancelar" okText="Aceptar!">
       <ion-select-option value="varicela">Varicela</ion-select-option>
-      <ion-select-option value="sarampion">Sarampion</ion-select-option>
+      <ion-select-option value="sarampion">Sarampión</ion-select-option>
       <ion-select-option value="paperas">Paperas</ion-select-option>
       <ion-select-option value="escarlatina">Escarlatina</ion-select-option>
       <ion-select-option value="epilepsia">Epilepsia</ion-select-option>
@@ -52,7 +52,7 @@
       <ion-select-option value="epoc">Epoc</ion-select-option>
       <ion-select-option value="fibrosis">Fibrosis</ion-select-option>
       <ion-select-option value="celiaquia">Celiaquia</ion-select-option>
-      <ion-select-option value="diarreacronica">Diarrea Cronica</ion-select-option>
+      <ion-select-option value="diarreacronica">Diarrea Crónica</ion-select-option>
       <ion-select-option value="hepatitis">Hepatitis</ion-select-option>
       <ion-select-option value="lupus">Lupus</ion-select-option>
       <ion-select-option value="leucemia">Leucemia</ion-select-option>
@@ -70,25 +70,25 @@
       <ion-select-option value="sangradonasal">Sangrado Nasal</ion-select-option>
       <ion-select-option value="anemia">Anemia</ion-select-option>
       <ion-select-option value="broncoespasmos">Broncoespsamos</ion-select-option>
-      <ion-select-option value="hipertension">Hipertension</ion-select-option>
+      <ion-select-option value="hipertension">Hipertensión</ion-select-option>
       <ion-select-option value="otro">Otro</ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-item>
-    <ion-label>Medicacion</ion-label>
+    <ion-label>Medicación</ion-label>
     <ion-select class='centrado' [(ngModel)]='fichamedica.medicaciones' multiple="true" cancelText="Cancelar" okText="Aceptar!">
-      <ion-select-option value="medicacion1">Medicacion 1</ion-select-option>
-      <ion-select-option value="medicacion2">Medicacion 2</ion-select-option>
-      <ion-select-option value="medicacion3">Medicacion 3</ion-select-option>
+      <ion-select-option value="medicacion1">Medicación 1</ion-select-option>
+      <ion-select-option value="medicacion2">Medicación 2</ion-select-option>
+      <ion-select-option value="medicacion3">Medicación 3</ion-select-option>
       <ion-select-option value="otraMedicacion">Otra</ion-select-option>
     </ion-select>
   </ion-item>
 
-  <ion-text><h1 class='textoL'>Si su Enfermedad, Alergia, Padecimiento o Medicacion no aparecen en la lista anterior y selecciono 'otra', Por favor, complete los siguientes campos:</h1></ion-text>
+  <ion-text><h1 class='textoL'>Si su Enfermedad, Alergia, Padecimiento o Medicación no aparecen en la lista anterior y selecciono 'otra', Por favor, complete los siguientes campos:</h1></ion-text>
 
   <ion-input class='centrado' [(ngModel)]='fichamedica.otraenfermedad' placeholder="-Enfermedad, Alergia y/o Padecimiento"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.otramedicacion' placeholder="-Medicacion"></ion-input>
+  <ion-input class='centrado' [(ngModel)]='fichamedica.otramedicacion' placeholder="-Medicación"></ion-input>
 
   
   <ion-button class='centro' size='large' (click)=anadirdatosfichamedica() routerLink='/ficha-medica-enfermedades'>¡Continuar!</ion-button>
