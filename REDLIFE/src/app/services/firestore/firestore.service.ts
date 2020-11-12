@@ -48,8 +48,12 @@ anadirusuario(usuario){
     }).then((docRef)=>{
       usuario.idfb = docRef.id;
       this.actualizarusuario(usuario);
-    })    
-    }
+    })}
+  AgregarIDFBaDB(){
+    this.db.collection('usuarios').doc(this.usuario.idfb).update({
+      idfb: this.usuario.idfb,
+    }), { merge: true }  
+  }
   actualizarusuario(usuario){
     this.usuario = usuario;
     this.usuariomanejador.next(usuario);
@@ -58,16 +62,16 @@ anadirusuario(usuario){
     this.usuario.user= apodo;
     this.actualizarusuario(this.usuario);
     console.log(this.usuario);
-    this.db.collection('usuarios').doc(this.usuario.idfb).set({
+    this.db.collection('usuarios').doc(this.usuario.idfb).update({
       user: this.usuario.user,
-      }, { merge: true }) //merge es para combinar datos
+      }), { merge: true }  //merge es para combinar datos
     }
     anadirtoken(token){
       this.usuario.token= token;
       this.actualizarusuario(this.usuario);
-      this.db.collection('usuarios').doc(this.usuario.idfb).set({
+      this.db.collection('usuarios').doc(this.usuario.idfb).update({
         token: this.usuario.token,
-        }, { merge: true }) //merge es para combinar datos
+        }), { merge: true }  //merge es para combinar datos
       }
   obtenernombredeusuario(){
     const a = this.db.collection('usuarios').doc(this.usuario.idfb);
@@ -88,7 +92,6 @@ anadirusuario(usuario){
       this.RefDb.subscribe((res)=>{
         res.forEach((usuario:user)=>{
               this.actualizarusuario(usuario);
-              console.log('datos' , this.usuario);
         })
        })
   }
@@ -135,16 +138,16 @@ anadirusuario(usuario){
    this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id,)).valueChanges()
      }
   actualizartoken(token1){
-      console.log(token1);
       console.log(this.usuario);
+      this.traerdatoscontraercolleccion();
       this.usuario.token= token1;
       this.actualizarusuario(this.usuario);
+      this.db.collection('usuarios').doc(this.usuario.idfb).update({
+        'token': this.usuario.token,
+      })
       console.log(this.usuario);
-      //this.db.collection('usuarios').doc(this.usuario.idfb).update({
-       // 'token': this.usuario.token,
-        //})
-    }
-  }
+         
+  }}
     
 
      /*traerdatoscontraercoleccion(){
