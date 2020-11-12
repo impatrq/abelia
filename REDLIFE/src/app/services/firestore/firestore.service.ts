@@ -30,6 +30,7 @@ export class FirestoreService {
     this.usuarioestado = this.usuariomanejador.asObservable();
     this.usuarioestado.subscribe((usuarionuevo:user)=>{
       this.usuario=usuarionuevo
+      console.log("hola" , this.usuario)
     })
     
     this.datosfichamedica = undefined;
@@ -128,7 +129,7 @@ anadirusuario(usuario){
   traerconuidaliniciarsesion(id){
     console.log(id);
     this.usuario.id= id;
-    this.actualizarusuario(this.usuario.id);
+    this.actualizarusuario(this.usuario);
   }
   traercoleccion(){
    this.RefDb = this.db.collection('usuarios', ref => ref.where( "id", "==" , this.usuario.id,)).valueChanges()
