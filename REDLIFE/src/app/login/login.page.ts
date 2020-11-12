@@ -4,6 +4,8 @@ import { user} from '../shared/user.class';
 import { FirestoreService} from '../services/firestore/firestore.service';
 import { Router } from '@angular/router';
 import { MessagingService } from '../services/messaging.service';
+import { AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,7 +14,7 @@ import { MessagingService } from '../services/messaging.service';
 export class LoginPage implements OnInit {
   user: user = new user ();
 
-  constructor(private authSvc: AuthService, private router: Router, private firestore: FirestoreService, private messagingService: MessagingService) { }
+  constructor(public alertController: AlertController, private authSvc: AuthService, private router: Router, private firestore: FirestoreService, private messagingService: MessagingService) { }
 
   ngOnInit() {
   }
@@ -36,4 +38,26 @@ export class LoginPage implements OnInit {
        }
       })
     }
+
+    async presentAlert() {
+      const alert = await this.alertController.create({
+        header: '¡Importante!',
+        message: 'Cuando oprima "Continuar" va a ser redirigido a la pestaña de recuperación de la contraseña. Por favor, lea con atención las instrucciones.',
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            handler: () => {}
+          },
+          {
+            text: 'Continuar',
+            handler: () => {
+              this.router.navigateByUrl('recuperacioncontrasena');
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
   }
+  

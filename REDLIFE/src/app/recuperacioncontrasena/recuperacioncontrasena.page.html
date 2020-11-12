@@ -1,15 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>recuperacion contraseña</ion-title>
+    <ion-title>Password recovery</ion-title>
+    <ion-button fill="outlined" icon-only routerLink='/login'>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-input [(ngModel)]='email' placeholder='Email' type='string'>
-  </ion-input>
-  <ion-button (click)=recuperarcontrasena()>
-    Confirmar
-  </ion-button>
+  <ion-text>
+    <h1 class='texto' >A continuación, le solicitamos que ingrese una dirección de mail a la que tenga acceso. En esta, va a recibir un mensaje con un link en el que podra cambiar la contraseña de su cuenta:</h1>
+  </ion-text>
+
+  <ion-input class="centro" [(ngModel)]='email' placeholder='Dirección de Correo Elctrónico' type='string'></ion-input>
+
+  <ion-button class='posicioningresar' (click)=recuperarcontrasena() (click)='presentAlert()'>Confirmar</ion-button>
 
 </ion-content>

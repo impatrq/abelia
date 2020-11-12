@@ -1,21 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Registrarse</ion-title>
+    <ion-title>Register</ion-title>
+    <ion-button fill="outlined" icon-only routerLink='/login'>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-input [(ngModel)]='user.email' placeholder='email'
-  type='email'>
-  </ion-input>
 
-  <ion-input type= "text"[(ngModel)]='user.password' placeholder='Password' type='password'>
-  </ion-input>
-  <ion-button (click)=register()>
-     Registrarme
-  </ion-button>
+  <ion-text class='centrado' size='large'>
+    <h1 class='centrado' >Registrar Usuario</h1>
+  </ion-text>
+
+  <ion-input class="centro" [(ngModel)]='user.email' placeholder='Dirección de Correo Electrónico'type='email'></ion-input>
+  <ion-input class="margen" type= "text"[(ngModel)]='user.password' placeholder='Contraseña' type='password'></ion-input>
+
+  <ion-button class='posicioningresar' (click)=register()>Registrarme</ion-button>
   
-  <ion-button routerLink="/logoreg">
-Atrás
-  </ion-button>
 </ion-content>

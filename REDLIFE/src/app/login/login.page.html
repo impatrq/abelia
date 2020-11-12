@@ -1,24 +1,31 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Login</ion-title>
+    <ion-button fill="outlined" icon-only routerLink='/home'>
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-input [(ngModel)]='user.email' placeholder='Email'
-  type='email'>
-  </ion-input>
-  <ion-input type= "text"[(ngModel)]='user.password' placeholder='Password' type='password'>
-  </ion-input>
-  <ion-button (click)=login()>
-    Ingresar
- </ion-button>
- <ion-button routerLink='/recuperacioncontrasena'>
-   Olvide mi contraseña
- </ion-button>
+  
+  <ion-text size='large'>
+    <h1 class='centrado' >Iniciar Sesión</h1>
+  </ion-text>
 
- <ion-button routerLink='/logoreg'>
-  Atras
-</ion-button>
+  <ion-input class="centro" [(ngModel)]='user.email' placeholder='Dirección de Correo Electrónico'type='email'></ion-input>
+  <ion-input class="margen" type= "text"[(ngModel)]='user.password' placeholder='Contraseña' type='password'></ion-input>
+
+  <ion-row class='separador' > 
+    <ion-col>
+      <ion-button fill='outlined' size='small' routerLink='/register' >¿No tiene una cuenta? ¡Registrese aquí!</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button  fill='outlined' size='small' (click)='presentAlert()'>Olvide mi contraseña</ion-button>
+    </ion-col>
+  </ion-row>
+  
+  <ion-button class='posicioningresar' size='large' (click)=login()>Ingresar</ion-button>
+  
 
 </ion-content>
