@@ -21,7 +21,8 @@ export class LoginPage implements OnInit {
   async login() {
      this.authSvc.login(this.user)
      .then(user=>{
-       this.firestore.traerconuidaliniciarsesion(user.user.uid);
+      this.firestore.actualizarusuario(user.user); 
+      this.firestore.traerconuidaliniciarsesion(user.user.uid);
        this.router.navigateByUrl('/cerrarsesion');
        console.log('Inició sesión correctamente');
        //si se pone algo mas cambiar cerrarsesion por el token
