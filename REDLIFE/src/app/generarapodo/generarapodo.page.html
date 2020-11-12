@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>generarapodo</ion-title>
+    <ion-title>Elegir Apodo</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-input [(ngModel)]='apodo' placeholder='Apodo' type='string'>
-  </ion-input>
-  <ion-button (click)='generarapodo()' routerLink='/pagina-inicial'> continuar </ion-button>
+
+  <ion-text><h1 class='texto'>Por último, ingrese un apodo con el cual nos referiremos a usted dentro del uso de la aplicación:</h1></ion-text>
+
+  <ion-input class='centrado' [(ngModel)]='apodo' placeholder='Apodo' type='string'></ion-input>
+  <ion-button size='large' class='centro' (click)='generarapodo()' routerLink='/pagina-inicial'> ¡Continuar! </ion-button>
+
+
+
 </ion-content>
