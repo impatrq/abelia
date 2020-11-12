@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
      .then(user=>{
       this.firestore.actualizarusuario(user.user); 
       this.firestore.traerconuidaliniciarsesion(user.user.uid);
-       this.router.navigateByUrl('/cerrarsesion');
+       this.router.navigateByUrl('/pagina-inicial');
        console.log('Inició sesión correctamente');
        //si se pone algo mas cambiar cerrarsesion por el token
       })
