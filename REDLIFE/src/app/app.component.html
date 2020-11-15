@@ -2,4 +2,26 @@
 <ion-app>
   {{ message | async | json }}
   <ion-router-outlet></ion-router-outlet>
+
+
+  <ion-menu side="start" menu-id="first" content-id="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu Principal</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item routerLink='informacion-ficha-medica'><ion-icon name="information-circle-outline"></ion-icon>Información Ficha Médica</ion-item>
+        <ion-item routerLink='ficha-medica'><ion-icon name="medkit-outline"></ion-icon>Ficha Médica</ion-item>
+        <ion-item routerLink='ficha-medica-enfermedades'><ion-icon name="archive-outline"></ion-icon>Historial Clínico</ion-item>
+        <ion-item routerLink='generarapodo'><ion-icon name="person-circle-outline"></ion-icon>Cambiar Apodo</ion-item>
+        <ion-item routerLink='recuperacioncontrasena'><ion-icon name="people-outline"></ion-icon>Cambiar Contraseña</ion-item>
+        <ion-item routerLink='cerrarsesion'><ion-icon name="person-remove-outline"></ion-icon>Cerrar Sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
+  <ion-router-outlet id='main'></ion-router-outlet>
 </ion-app>
