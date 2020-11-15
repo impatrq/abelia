@@ -18,8 +18,11 @@ export class RecuperacioncontrasenaPage implements OnInit {
     this.authSvc.recuperarcontrasena(this.email)
     .then(()=>{
     console.log('se envio el correo')
+    this.presentAlert()
     })
-    .catch(err=>{ console.log(err)})
+    .catch(err=>{ console.log(err)
+      this.AlertaFallo()
+    })
   }
 
   async presentAlert() {
@@ -31,6 +34,23 @@ export class RecuperacioncontrasenaPage implements OnInit {
           text: 'Continuar',
           handler: () => {
             this.router.navigateByUrl('login');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
+  async AlertaFallo() {
+    const alert = await this.alertController.create({
+      header: '¡Importante!',
+      message: 'El E-mail no pertenece a ninguna cuenta o es inválido. Por favor intente nuevamente con una Dirección distinta.',
+      buttons: [
+        {
+          text: 'Continuar',
+          handler: () => {
+            this.router.navigateByUrl('recuperacioncontrasena');
           }
         }
       ]
