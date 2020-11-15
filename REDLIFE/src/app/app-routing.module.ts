@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'generarapodo',
     loadChildren: () => import('./generarapodo/generarapodo.module').then( m => m.GenerarapodoPageModule)
   },
+  {
+    path: 'informacion-ficha-medica',
+    loadChildren: () => import('./informacion-ficha-medica/informacion-ficha-medica.module').then( m => m.InformacionFichaMedicaPageModule)
+  },
 
 
 
