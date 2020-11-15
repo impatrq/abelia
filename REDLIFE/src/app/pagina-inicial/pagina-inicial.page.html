@@ -1,12 +1,37 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>ABELIA: RedLife</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
 
-<ion-content>
+  <ion-header>
 
-  <ion-text><h1>Ahora si, empecemos!</h1></ion-text>
-  <ion-button>Alertas</ion-button>
-  <ion-button  class="centro" shape="round" size="large" routerLink='/cerrarsesion'>Cerrar Sesión</ion-button>
-</ion-content>
+    <ion-toolbar>
+      <ion-title>ABELIA: RedLife</ion-title>
+      <ion-button fill="outlined" icon-only (click)=openFirst()>
+        <ion-icon name="reorder-three-outline"></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+
+  </ion-header>
+
+  <ion-content>
+
+    <ion-button  class="centro" shape="round" size="large" routerLink='/cerrarsesion'>Cerrar Sesión</ion-button>
+
+  </ion-content>
+
+  <ion-menu side="start" menu-id="first" content-id="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Start Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+</ion-app>
