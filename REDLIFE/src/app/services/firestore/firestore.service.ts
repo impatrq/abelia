@@ -127,7 +127,7 @@ anadirusuario(usuario){
       HCEnfermedadesviejas: fichamedica.enfermedadesviejas,
       HCMedicamentosviejos: fichamedica.medicamentosviejos,
       HCVacunasdadas: fichamedica.vacunasdadas,
-    })
+    },{merge: true})
   }  
   traerconuidaliniciarsesion(id){
     console.log(id);
