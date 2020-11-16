@@ -35,13 +35,12 @@ export class AppComponent {
   }
 
   async openFirst() {
-    menuController.enable(true, 'first');
-    menuController.open('first');
+    menuController.enable(true, 'MenuPrincipal');
+    menuController.open('MenuPrincipal');
   }
 
   async openEnd() {
-    menuController.enable(true, 'first');
-    menuController.close('end');
+    menuController.open('MenuPrincipal');
   }
 
   async openCustom() {

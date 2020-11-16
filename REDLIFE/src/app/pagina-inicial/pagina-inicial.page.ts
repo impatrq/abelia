@@ -18,12 +18,12 @@ export class PaginaInicialPage implements OnInit {
     ngOnInit() {}
 
     async openFirst() {
-      menuController.enable(true, 'first');
-      menuController.open('first');
+      menuController.enable(true, 'MenuPrincipal');
+      menuController.open('MenuPrincipal');
     }
   
     async openEnd() {
-      menuController.open('end');
+      menuController.open('MenuPrincipal');
     }
   
     async openCustom() {
