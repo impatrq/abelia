@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessagingService } from '../services/messaging.service';
 import {FirestoreService} from '../services/firestore/firestore.service';
 import { user } from '../shared/user.class';
-import { menuController } from '@ionic/core';
+import { MenuController } from '@ionic/angular';
 import { async } from '@angular/core/testing';
 
 
@@ -14,20 +14,12 @@ import { async } from '@angular/core/testing';
 
 export class PaginaInicialPage implements OnInit {
   user:user;
-   constructor(private angularFireMessaging: MessagingService, private firestore: FirestoreService) { }
+   constructor(private menu: MenuController, private angularFireMessaging: MessagingService, private firestore: FirestoreService) { }
     ngOnInit() {}
 
-    async openFirst() {
-      menuController.enable(true, 'MenuPrincipal');
-      menuController.open('MenuPrincipal');
+    openFirst() {
+      this.menu.enable(true, 'MenuPrincipal');
+      this.menu.open('MenuPrincipal');
     }
   
-    async openEnd() {
-      menuController.open('MenuPrincipal');
-    }
-  
-    async openCustom() {
-      menuController.enable(true, 'custom');
-      menuController.open('custom');
-    }
   }
