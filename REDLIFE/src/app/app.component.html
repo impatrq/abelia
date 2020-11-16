@@ -3,7 +3,8 @@
   {{ message | async | json }}
 
 
-  <ion-menu side="start" menu-id="first" content-id="main">
+  <ion-menu side="start" menuId="MenuPrincipal" contentId="main">
+
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Menu Principal</ion-title>
@@ -19,6 +20,7 @@
         <ion-item routerLink='cerrarsesion'><ion-icon name="person-remove-outline" (click)=openEnd()></ion-icon>Cerrar Sesión</ion-item>
       </ion-list>
     </ion-content>
+
   </ion-menu>
 
 
