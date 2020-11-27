@@ -16,7 +16,7 @@ export class FirestoreService {
   user:user;
   private usuario: user;
   private usuariomanejador: BehaviorSubject<user>;
-  private usuarioestado: Observable<user>;
+  public usuarioestado: Observable<user>;
   private RefDb;
   private token;
   fichamedica:fichamedica;
@@ -77,8 +77,11 @@ anadirusuario(usuario){
     const a = this.db.collection('usuarios').doc(this.usuario.idfb);
     a.get().forEach((doc)=> {
       console.log(doc.data().user);
-    })
-  }
+      const usuario = (doc.data().user);
+      console.log('hello', usuario);
+      return usuario;
+      })
+    }
   traerdatos(){
       const b = this.db.collection('usuarios').doc(this.usuario.idfb);
       b.get().forEach((doc)=> {
@@ -127,7 +130,7 @@ anadirusuario(usuario){
       HCEnfermedadesviejas: fichamedica.enfermedadesviejas,
       HCMedicamentosviejos: fichamedica.medicamentosviejos,
       HCVacunasdadas: fichamedica.vacunasdadas,
-    })
+    },{merge: true})
   }  
   traerconuidaliniciarsesion(id){
     console.log(id);
@@ -146,8 +149,15 @@ anadirusuario(usuario){
         'token': this.usuario.token,
       })
       console.log(this.usuario);
-         
-  }}
+    }
+  actualizardatos(){
+    this.traerdatoscontraercolleccion();
+    console.log('actualizamos', this.usuario);
+  }
+  nombredeusuario(){
+    return (this.usuario.user);
+  }  
+  }
     
 
      /*traerdatoscontraercoleccion(){
