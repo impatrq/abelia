@@ -25,7 +25,7 @@ export class RegisterPage implements OnInit {
     this.user.id= id;
     this.user.email= user.user.email;
     this.fb.anadirusuario(this.user);
-    this.router.navigateByUrl('instrucciones-ficha-medica');
+    this.router.navigateByUrl('logoreg');
    
             })
   .catch(err=>{
