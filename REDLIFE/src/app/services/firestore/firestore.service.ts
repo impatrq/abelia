@@ -10,6 +10,7 @@ import { MessagingService } from '../messaging.service';
 import { fichamedica } from '../../shared/ficha-medica.class';
 import { Router } from '@angular/router';
 import { object } from 'firebase-functions/lib/providers/storage';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class FirestoreService {
   private datosfichamedicamanejador: BehaviorSubject<fichamedica>;
   private datosfichamedicaestado: Observable<fichamedica>;
 
-  constructor(private db: AngularFirestore, private router: Router) {
+  constructor(private db: AngularFirestore, private router: Router, private toastController: ToastController) {
     this.usuario = undefined;
     this.usuariomanejador = new BehaviorSubject<user>(undefined);
     this.usuarioestado = this.usuariomanejador.asObservable();
@@ -101,7 +102,7 @@ export class FirestoreService {
       })
     })
   }
-  anadirdatosfichamedica(fichamedica) {
+  async anadirdatosfichamedica(fichamedica) {
     const listaOptativos = ["FMObraSocial", "FMNumeroDeAfiliado", "FMNombreCompletoDelMedico", "FMNumeroDelMedico", "FMEnfermedades", "FMOtramedicacion"]
     let fichaMedica = {
       FMNombreCompleto: fichamedica.nombrecompleto,
@@ -137,8 +138,10 @@ export class FirestoreService {
       return false;
     })
     if (campoObligatorioVacio) {
-      console.log("hay campos que faltan completar");
+      const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"hay campos que faltan completar" })  
+      await mensajeDeError.present(); 
     }
+
     else {
       console.log(fichaMedica);
       this.db.collection('usuarios').doc(this.usuario.idfb).set(fichaMedica, { merge: true })
