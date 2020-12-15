@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Historial Clínico</ion-title>
+    <ion-title>Historial clínico</ion-title>
     <ion-button fill="outlined" icon-only routerLink='/ficha-medica'>
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-button>
@@ -17,19 +17,19 @@
 <ion-content>
   
   
-  <ion-text><h1 class='texto'>Procesos Quirúrgicos:</h1></ion-text>
+  <ion-text><h1 class='texto'>Procesos quirúrgicos:</h1></ion-text>
   <ion-input class='centrado' [(ngModel)]='fichamedica.operaciones' type='string' placeholder='Ej.: cirugías por salud, cirugías esteticas, etc.'></ion-input>
   
-  <ion-text><h1 class='texto'>Enfermedades o Padecimientos importantes:</h1></ion-text>
+  <ion-text><h1 class='texto'>Enfermedades o padecimientos importantes que ha atravesado:</h1></ion-text>
   <ion-input class='centrado' [(ngModel)]='fichamedica.enfermedadesviejas' type='string' placeholder='Ej.: broncoespamos, paperas, etc.'></ion-input>
   
-  <ion-text><h1 class='texto'>Medicamentos:</h1></ion-text>
+  <ion-text><h1 class='texto'>Medicamentos tomados anteriormente relevantes</h1></ion-text>
   <ion-input class='centrado' [(ngModel)]='fichamedica.medicamentosviejos' type='string' placeholder='Ej.: medicamento X'></ion-input>
   
-  <ion-text><h1 class='texto'>Vacunas:</h1></ion-text>
+  <ion-text><h1 class='texto'>Vacunas (obligatorio)*</h1></ion-text>
   <ion-input class='centrado' [(ngModel)]='fichamedica.vacunasdadas' type='string' placeholder='Ej.: antitetánica, antigripal, etc.'></ion-input>
   
   
-  <ion-button size='large' class='centro' (click)='anadirdatosfichamedicaenfermedades()' (click)='presentAlert()'>¡Continuar!</ion-button>
+  <ion-button size='large' class='centro' (click)='presentAlert()'>¡Continuar!</ion-button>
 
 </ion-content>
