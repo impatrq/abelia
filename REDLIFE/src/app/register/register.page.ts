@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { MessagingService } from '../services/messaging.service';
 import { AngularFirestore } from '@angular/fire/firestore'
 import { async } from '@angular/core/testing';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -14,7 +15,7 @@ import { async } from '@angular/core/testing';
 })
 export class RegisterPage implements OnInit {
   user: user = new user ();
-  constructor(private authSvc: AuthService,  private messagingService: MessagingService, private router: Router, private db: AngularFirestore, private fb: FirestoreService ) { }
+  constructor(private toastController: ToastController, private authSvc: AuthService,  private messagingService: MessagingService, private router: Router, private db: AngularFirestore, private fb: FirestoreService ) { }
 
   ngOnInit() { }
   async register() {
@@ -32,12 +33,31 @@ export class RegisterPage implements OnInit {
     console.log(err);
     switch
     (err.code){
-      case("auth/invalid-email"):console.log("Email y/o Contraseña invalidos");
-      case("auth/email-already-in-use"):console.log("Ya existe una cuenta con la direccion de correo ingresada");
-      case("auth/weak-password"):console.log("La contraseña debe tener 6 caracteres como minimo");
+      case("auth/invalid-email"): {this.toastPorFormatoInvalidodeEmail();
+      }
+      break;
+      case("auth/email-already-in-use"):{this.toastPorExistenciadeDireccionIngresada();
+      }
+      break;
+      case("auth/weak-password"):{ this.toastPorContraseñaInvalida()}
       break;
     }
   })
+  }
+  async toastPorFormatoInvalidodeEmail()
+  {
+    const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"No es válido el correo eléctronico" })  
+    await mensajeDeError.present(); 
+  }
+  async toastPorExistenciadeDireccionIngresada()
+  {
+    const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"El correo eléctronico ya está en uso" })  
+    await mensajeDeError.present(); 
+  }
+  async toastPorContraseñaInvalida()
+  {
+    const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"La contraseña debe tener al menos 6 caracteres" })  
+    await mensajeDeError.present(); 
   }
 }
 
