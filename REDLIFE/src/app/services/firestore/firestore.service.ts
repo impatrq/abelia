@@ -103,7 +103,7 @@ export class FirestoreService {
     })
   }
   async anadirdatosfichamedica(fichamedica) {
-    const listaOptativos = ["FMObraSocial", "FMNumeroDeAfiliado", "FMNombreCompletoDelMedico", "FMNumeroDelMedico", "FMEnfermedades", "FMOtramedicacion"]
+    const listaOptativos = ["FMObraSocial", "FMNumeroDeAfiliado", "FMNombreCompletoDelMedico", "FMNumeroDelMedico", "FMEnfermedades", "FMOtramedicacion","FMOtraenfermedad", "FMMedicaciones", "FMPisoYoDepartamento"]
     let fichaMedica = {
       FMNombreCompleto: fichamedica.nombrecompleto,
       FMEdad: fichamedica.edad,
@@ -138,7 +138,7 @@ export class FirestoreService {
       return false;
     })
     if (campoObligatorioVacio) {
-      const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"hay campos que faltan completar" })  
+      const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"Hay campos que faltan completar" })  
       await mensajeDeError.present(); 
     }
 
