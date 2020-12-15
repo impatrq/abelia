@@ -16,27 +16,7 @@ export class FichaMedicaEnfermedadesPage {
   constructor(public alertController: AlertController, private router: Router, private db: AngularFirestore, private fb: FirestoreService) {}
 
   async presentAlert() {
-    const alert = await this.alertController.create({
-      header: '¡Importante!',
-      message: 'Por favor revise los datos ingresados porque son importantes en caso de emergencia. Igualmente, estos podrán ser modificados mas adelante.',
-      buttons: [
-        {
-          text: 'Revisar',
-          role: 'cancel',
-          handler: () => {}
-        },
-        {
-          text: 'Continuar',
-          handler: () => {
-            this.router.navigateByUrl('generarapodo');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
 
-  anadirdatosfichamedicaenfermedades(){
     this.fb.anadirdatosfichamedicaenfermedades(this.fichamedica);
   }
 
