@@ -29,13 +29,22 @@
   <ion-input class='centrado' [(ngModel)]='fichamedica.altura' type='number' placeholder="Altura en Centimetros (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.peso' type='number' placeholder="Peso en Kilos (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.dni' type='number' placeholder="DNI o Número de Libreta de Identificación (obligatorio)*"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.fechadenacimiento' type='string' placeholder="Fecha de Nacimiento (obligatorio)*"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.sexo' type='string' placeholder="Sexo (obligatorio)*"></ion-input>
+  <ion-item>
+    <ion-label  position="floating">DD/MM/YYYY</ion-label>
+    <ion-datetime  [(ngModel)]='fichamedica. fechadenacimiento' displayFormat="DD/MM/YYYY" min="1900-01-01" max="2020-12-31"></ion-datetime>
+  </ion-item>
+   <ion-item>
+  <ion-label>Sexo (Obligatorio)*</ion-label>
+  <ion-select class='centrado' [(ngModel)]='fichamedica.sexo' cancelText="Cancelar" okText="Aceptar!">
+    <ion-select-option value="Femenino">Femenino</ion-select-option>
+    <ion-select-option value="Masculino">Masculino</ion-select-option>
+   </ion-select>
+</ion-item>
   <ion-input class='centrado' [(ngModel)]='fichamedica.obrasocial' type='string' placeholder="Obra Social"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.numerodeafiliado' type='number' placeholder="Número de Afiliado (en caso de que haya)"></ion-input>
   <ion-item>
     <ion-label>Grupo Sanguíneo (obligatorio)*</ion-label>
-    <ion-select class='centrado' [(ngModel)]='fichamedica.gruposanguineo' multiple="true" cancelText="Cancelar" okText="Aceptar!">
+    <ion-select class='centrado' [(ngModel)]='fichamedica.gruposanguineo' cancelText="Cancelar" okText="Aceptar!">
       <ion-select-option value="0+">0+</ion-select-option>
       <ion-select-option value="0-">0-</ion-select-option>
       <ion-select-option value="A+">A+</ion-select-option>
