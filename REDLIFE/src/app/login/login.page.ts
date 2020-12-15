@@ -5,7 +5,7 @@ import { FirestoreService} from '../services/firestore/firestore.service';
 import { Router } from '@angular/router';
 import { MessagingService } from '../services/messaging.service';
 import { AlertController } from '@ionic/angular';
-
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,7 +14,7 @@ import { AlertController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   user: user = new user ();
 
-  constructor(public alertController: AlertController, private authSvc: AuthService, private router: Router, private firestore: FirestoreService, private messagingService: MessagingService) { }
+  constructor(private toastController: ToastController, public alertController: AlertController, private authSvc: AuthService, private router: Router, private firestore: FirestoreService, private messagingService: MessagingService) { }
 
   ngOnInit() {
   }
@@ -31,14 +31,32 @@ export class LoginPage implements OnInit {
        console.log(err);
         switch
        (err.code){
-         case("auth/invalid-email"): console.log("Email o Contraseña invalidos.");
-         case("auth/wrong-password"): console.log("Email o Contraseña invalidos.");
-         case("auth/argument-error"): console.log("El mail es inexistente o invalido");
-         case("auth/user-not-found"): console.log("La Cuenta es Inexistente");
+         case("auth/invalid-email"): {this.toastPorEmailInvalido();}
+         break;
+         case("auth/wrong-password"):{this.toastPorContraseñaInvalida();};
+         break;
+         case("auth/argument-error"):{this.toastPorEmailInexistente();};
+         break;
+         case("auth/user-not-found"): {this.toastPorEmailInexistente();};
          break;
        }
       })
     }
+    async toastPorEmailInvalido()
+  {
+    const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"El correo electrónico es incorrecto" })  
+    await mensajeDeError.present(); 
+  }
+  async toastPorContraseñaInvalida()
+  {
+    const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"La contraseña es incorrecta" })  
+    await mensajeDeError.present(); 
+  }
+  async toastPorEmailInexistente()
+  {
+    const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"La cuenta con ese correo electrónico no existe" })  
+    await mensajeDeError.present(); 
+  }
 
     async presentAlert() {
       const alert = await this.alertController.create({
