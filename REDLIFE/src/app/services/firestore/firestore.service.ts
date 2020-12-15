@@ -129,13 +129,20 @@ export class FirestoreService {
     }
     const campoObligatorioVacio = Object.keys(fichaMedica).some(key => {
       const esObligatorio = !listaOptativos.includes(key);
+      const noEsObligatorio = listaOptativos.includes(key);
       if (esObligatorio) {
         console.log(fichaMedica[key], esObligatorio);
         if (fichaMedica[key] == undefined) {
           return true;
-        }
+          }
+      }
+      if (noEsObligatorio) {
+        if (fichaMedica[key] == undefined) {
+          fichaMedica[key] = ""; 
+          }
       }
       return false;
+      
     })
     if (campoObligatorioVacio) {
       const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"Hay campos que faltan completar" })  
@@ -155,14 +162,20 @@ export class FirestoreService {
     HCOperaciones: fichamedica.operaciones,
       HCEnfermedadesviejas: fichamedica.enfermedadesviejas,
       HCMedicamentosviejos: fichamedica.medicamentosviejos,
-      HCVacunasdadas: fichamedica.vacunasdadas }
+      HCVacunasdadas: fichamedica.vacunasdadas, }
       const campoObligatorioVacio = Object.keys(historiaClinica).some(key => {
         const esObligatorio = !listaOptativos.includes(key);
+        const noEsObligatorio = listaOptativos.includes(key);
         if (esObligatorio) {
           console.log(historiaClinica[key], esObligatorio);
           if (historiaClinica[key] == undefined) {
             return true;
           }
+        }
+        if (noEsObligatorio) {
+          if (historiaClinica[key] == undefined) {
+            historiaClinica[key] = ""; 
+            }
         }
         return false;
       })
@@ -184,17 +197,15 @@ export class FirestoreService {
             {
               text: 'Continuar',
               handler: () => {
-                this.router.navigateByUrl('generarapodo');
-                this.db.collection('usuarios').doc(this.usuario.idfb).set({
+                  this.db.collection('usuarios').doc(this.usuario.idfb).set({
                   historiaClinica }, { merge: true })
-              }
+                this.router.navigateByUrl('/generarapodo');
+                             }
             }
           ]
         });
         await alert.present();
-      }
-
-      }
+      }}
     
   traerconuidaliniciarsesion(id) {
     console.log(id);
