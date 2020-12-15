@@ -11,7 +11,7 @@ import { fichamedica } from '../../shared/ficha-medica.class';
 import { Router } from '@angular/router';
 import { object } from 'firebase-functions/lib/providers/storage';
 import { ToastController } from '@ionic/angular';
-
+import { AlertController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +27,7 @@ export class FirestoreService {
   private datosfichamedicamanejador: BehaviorSubject<fichamedica>;
   private datosfichamedicaestado: Observable<fichamedica>;
 
-  constructor(private db: AngularFirestore, private router: Router, private toastController: ToastController) {
+  constructor(private alertController: AlertController, private db: AngularFirestore, private router: Router, private toastController: ToastController) {
     this.usuario = undefined;
     this.usuariomanejador = new BehaviorSubject<user>(undefined);
     this.usuarioestado = this.usuariomanejador.asObservable();
@@ -149,14 +149,53 @@ export class FirestoreService {
     }
   }
 
-  anadirdatosfichamedicaenfermedades(fichamedica) {
-    this.db.collection('usuarios').doc(this.usuario.idfb).set({
-      HCOperaciones: fichamedica.operaciones,
+  async anadirdatosfichamedicaenfermedades(fichamedica) {
+    const listaOptativos = ["HCOperaciones", "HCEnfermedadesviejas", "HCMedicamentosviejos", "HCVacunasdadas"]
+    let historiaClinica = {
+    HCOperaciones: fichamedica.operaciones,
       HCEnfermedadesviejas: fichamedica.enfermedadesviejas,
       HCMedicamentosviejos: fichamedica.medicamentosviejos,
-      HCVacunasdadas: fichamedica.vacunasdadas,
-    }, { merge: true })
-  }
+      HCVacunasdadas: fichamedica.vacunasdadas }
+      const campoObligatorioVacio = Object.keys(historiaClinica).some(key => {
+        const esObligatorio = !listaOptativos.includes(key);
+        if (esObligatorio) {
+          console.log(historiaClinica[key], esObligatorio);
+          if (historiaClinica[key] == undefined) {
+            return true;
+          }
+        }
+        return false;
+      })
+      if (campoObligatorioVacio) {
+        const mensajeDeError = await this.toastController.create({color:"danger", duration:2000, message:"Hay campos que faltan completar" })  
+        await mensajeDeError.present(); 
+      }
+  
+      else {
+        const alert = await this.alertController.create({
+          header: '¡Importante!',
+          message: 'Por favor revise los datos ingresados porque son importantes en caso de emergencia. Igualmente, estos podrán ser modificados mas adelante.',
+          buttons: [
+            {
+              text: 'Revisar',
+              role: 'cancel',
+              handler: () => {}
+            },
+            {
+              text: 'Continuar',
+              handler: () => {
+                this.router.navigateByUrl('generarapodo');
+                this.db.collection('usuarios').doc(this.usuario.idfb).set({
+                  historiaClinica }, { merge: true })
+              }
+            }
+          ]
+        });
+        await alert.present();
+      }
+
+      }
+    
   traerconuidaliniciarsesion(id) {
     console.log(id);
     this.usuario.id = id;
