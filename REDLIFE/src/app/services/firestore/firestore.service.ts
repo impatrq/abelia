@@ -157,12 +157,13 @@ export class FirestoreService {
   }
 
   async anadirdatosfichamedicaenfermedades(fichamedica) {
-    const listaOptativos = ["HCOperaciones", "HCEnfermedadesviejas", "HCMedicamentosviejos", "HCVacunasdadas"]
+    const listaOptativos = ["HCOperaciones", "HCEnfermedadesviejas", "HCMedicamentosviejos", "HCVacunasdadas", "HCVacunasDadasFueraDeCalendario"] 
     let historiaClinica = {
     HCOperaciones: fichamedica.operaciones,
       HCEnfermedadesviejas: fichamedica.enfermedadesviejas,
       HCMedicamentosviejos: fichamedica.medicamentosviejos,
-      HCVacunasdadas: fichamedica.vacunasdadas, }
+      HCVacunasdadas: fichamedica.vacunasdadas,
+      HCVacunasDadasFueraDeCalendario: fichamedica.vacunasDadasFueraDeCalendario, }
       const campoObligatorioVacio = Object.keys(historiaClinica).some(key => {
         const esObligatorio = !listaOptativos.includes(key);
         const noEsObligatorio = listaOptativos.includes(key);
