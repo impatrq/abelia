@@ -1,3 +1,5 @@
+import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
+
 export class fichamedica {
     nombrecompleto: string;
     edad: number;
@@ -25,4 +27,5 @@ export class fichamedica {
     enfermedadesviejas: string;
     medicamentosviejos: string;
     vacunasdadas: string;
+    vacunasDadasFueraDeCalendario: string;
 }
