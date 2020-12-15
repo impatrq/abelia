@@ -24,7 +24,6 @@
   <ion-text><h1  class='texto'>Datos Personales:</h1></ion-text>
   <ion-text><h1 class='textoL'>Por Favor, Lea detalladamente y complete a Consciencia:</h1></ion-text>
   <ion-text><h1 class='textoP'>*Los campos obligatorios son para brindar la información necesaria en caso de Emergencia.*</h1></ion-text>
-  ["FMObraSocial", "FMNumeroDeAfiliado", "FMNombreCompletoDelMedico", "FMNumeroDelMedico", "FMEnfermedades", "FMOtramedicacion","FMOtraenfermedad", "FMMedicaciones"]
   <ion-input class='centrado' [(ngModel)]='fichamedica.nombrecompleto' type='string' placeholder="Nombre Completo (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.edad' type='string' placeholder="Edad (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.altura' type='number' placeholder="Altura en Centimetros (obligatorio)*"></ion-input>
@@ -111,7 +110,7 @@
   <ion-text><h1 class='textoL'>Si su Enfermedad, Alergia, Padecimiento o Medicación no aparecen en la lista anterior y selecciono 'otra', Por favor, complete los siguientes campos:</h1></ion-text>
 
   <ion-input class='centrado' [(ngModel)]='fichamedica.otraenfermedad' placeholder="Enfermedad, Alergia y/o Padecimiento"></ion-input>
-  <ion-input class='centrado' [(ngModel)]='fichamedica.otramedicacion' placeholder="Medicación (en caso de ser mas de una agreguelas con una ','de separación)"></ion-input>
+  <ion-input class='centrado' [(ngModel)]='fichamedica.otramedicacion' placeholder="Medicación (en caso de ser mas de una agreguelas con una ',' de separación)"></ion-input>
 
   
   <ion-button class='centro' size='large' (click)=anadirdatosfichamedica() >¡Continuar!</ion-button>
