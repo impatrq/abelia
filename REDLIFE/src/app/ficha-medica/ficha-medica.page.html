@@ -30,12 +30,12 @@
   <ion-input class='centrado' [(ngModel)]='fichamedica.peso' type='number' placeholder="Peso en Kilos (obligatorio)*"></ion-input>
   <ion-input class='centrado' [(ngModel)]='fichamedica.dni' type='number' placeholder="DNI o Número de Libreta de Identificación (obligatorio)*"></ion-input>
   <ion-item>
-    <ion-label  position="floating">DD/MM/YYYY</ion-label>
-    <ion-datetime  [(ngModel)]='fichamedica. fechadenacimiento' displayFormat="DD/MM/YYYY" min="1900-01-01" max="2020-12-31"></ion-datetime>
+    <ion-label  position="floating">Ingrese su fecha de nacimiento</ion-label>
+    <ion-datetime  value="12-12-1960" cancelText="Cancelar" doneText="Aceptar" [(ngModel)]='fichamedica. fechadenacimiento' displayFormat="DD/MM/YYYY" min="1900-01-01" max="2020-12-31"></ion-datetime>
   </ion-item>
    <ion-item>
-  <ion-label>Sexo (Obligatorio)*</ion-label>
-  <ion-select class='centrado' [(ngModel)]='fichamedica.sexo' cancelText="Cancelar" okText="Aceptar!">
+  <ion-label>Sexo (obligatorio)*</ion-label>
+  <ion-select class='centrado' [(ngModel)]='fichamedica.sexo' cancelText="Cancelar" okText="Aceptar">
     <ion-select-option value="Femenino">Femenino</ion-select-option>
     <ion-select-option value="Masculino">Masculino</ion-select-option>
    </ion-select>
